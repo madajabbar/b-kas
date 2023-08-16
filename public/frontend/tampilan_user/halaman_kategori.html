@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Halaman | Kategori</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
+      integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@7.2.96/css/materialdesignicons.min.css"
+    />
+
+    <link rel="stylesheet" href="/css/index.css">
+    <link href="/img/Logo_webbkas.png" rel="icon"/>
+  </head>
+  <style>
+    body {
+      background-color: #c7ea46;
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+  <body>
+    <!-- {{-- Awal Navigasi --}} -->
+    <nav class="py-2 navbar bg-body-tertiary">
+    <div class="container">
+        <div class="navbar-bkas">
+            <a href="#">
+                <img src="/img/Logo_BKas.png" alt="">
+            </a>
+        </div>
+        <div class="flex pencarian">
+            <form role="search">
+                <input class="form-control me-5" type="search" placeholder="Cari di BKas.id" aria-label="Search">
+            </form>
+        </div>
+        <div class="lonceng">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16"><path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/></svg>
+            </a>
+        </div>
+        <div class="keranjang">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16"><path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg>
+            </a>
+        </div>
+        <div class="tombol-masuk">
+            <button type="button" class="btn">Masuk</button>
+        </div>
+        <div class="tombol-daftar">
+            <button type="button" class="btn">Daftar</button>
+        </div>
+        <div class="akun">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="35px" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+            </a>
+        </div>
+    </div>
+    </nav>
+    <!-- {{-- Akhir Navigasi --}} -->
+    <div
+      class="container-fluid"
+      style="background-color: #e0e0e0; height: auto; top: 166px"
+    >
+      <div class="mb-4 d-inline-flex">
+        <div class="p-2">
+          <h1
+            class="mb-0 bd-title"
+            style="
+              font-size: 40px;
+              font-weight: 700;
+              line-height: 67px;
+              letter-spacing: 0em;
+              text-align: left;
+              color: #656565;
+            "
+          >
+            Pilihan Hari ini
+          </h1>
+        </div>
+      </div>
+      <div class="p-4 float-end">
+        <span
+          class="bi bi-geo-alt-fill fw-bold"
+          style="font-size: 20px; color: #0332da"
+        >
+          Pontianak
+        </span>
+      </div>
+      <div class="row row-cols-1 row-cols-md-4 g-4 rounded-50">
+        <div class="col" style="color: #f5f5f5">
+          <div class="card h-100">
+            <img
+              src="\img\Kipas.png"
+              class="card-img-top"
+              alt="..."
+              style="width: auto; height: 200px"
+            />
+            <div class="card-body">
+              <h4 class="card-title fw-bold" style="font-size: 25px">
+                Kipas Tornado Merk Sekairin
+              </h4>
+              <p class="card-text">Pontianak</p>
+              <p class="float-end" style="font-size: 30px">Rp 150.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col" style="color: #f5f5f5">
+          <div class="card h-100">
+            <img
+              src="\img\Kipas1.png"
+              class="card-img-top"
+              alt="..."
+              style="width: auto; height: 200px"
+            />
+            <div class="card-body">
+              <h4 class="card-title fw-bold" style="font-size: 25px">
+                Kipas dengan Air dingin merek miyako
+              </h4>
+              <p class="card-text">Pontianak</p>
+              <p class="float-end" style="font-size: 30px">Rp 132.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col" style="color: #f5f5f5">
+          <div class="card h-100">
+            <img
+              src="\img\dispenser1.png"
+              class="card-img-top"
+              alt="..."
+              style="width: auto; height: 200px"
+            />
+            <div class="card-body">
+              <h4 class="card-title fw-bold" style="font-size: 25px">
+                Dispenser merek yanko bisa panas dan dingin
+              </h4>
+              <p class="card-text">Pontianak</p>
+              <p class="float-end" style="font-size: 30px">Rp 40.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="col" style="color: #f5f5f5">
+          <div class="card h-100">
+            <img
+              src="\img\Setrika1.png"
+              class="card-img-top"
+              alt="..."
+              style="width: auto; height: 200px"
+            />
+            <div class="card-body">
+              <h4 class="card-title fw-bold" style="font-size: 25px">
+                Setrika merek cosmos dengan 20 watt
+              </h4>
+              <p class="card-text">Pontianak</p>
+              <p class="float-end" style="font-size: 30px">Rp 50.000</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+    <br />
+    <div
+      class="container-fluid"
+      style="
+        height: auto;
+        width: auto;
+        background-color: #b5b5b5;
+        font-family: Inter, sans-serif;
+      "
+    >
+      <div class="mb-4 d-inline-flex">
+        <div class="p-2" style="height: auto">
+          <a
+            href="#"
+            class="bi bi-grid-fill fw-bold"
+            style="font-size: 40px; text-decoration: none; color: black"
+          >
+            Filter</a
+          >
+
+          <div class="accordion" id="accordionExample">
+            <div
+              class="accordion-item"
+              style="background-color: #b5b5b5; border: 0px; width: 300px"
+            >
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed fw-bold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="false"
+                  aria-controls="collapseOne"
+                  style="background-color: #b5b5b5; border: 0px"
+                >
+                  Urut Berdasarkan
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    Disarankan
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 132px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    Jarak: Dari terdekat
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 74px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    Tanggal terdaftar: Dari terbaru
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    Harga: Dari terendah
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 63px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    Harga: Dari tertinggi
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 68px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label for="">Harga</label>
+                  <form class="mt-1 row g-3">
+                    <div class="col-auto">
+                      <label for="inputmin" class="visually-hidden">Min</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputmin"
+                        placeholder="min"
+                        style="width: 70px"
+                      />
+                    </div>
+                    <div class="col-auto">
+                      <h6 class="mt-2">Hingga</h6>
+                    </div>
+                    <div class="col-auto">
+                      <label for="inputmax" class="visually-hidden">Max</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="inputmax"
+                        placeholder="max"
+                        style="width: 70px"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div
+              class="accordion-item"
+              style="background-color: #b5b5b5; border: 0px"
+            >
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed fw-bold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                  style="background-color: #b5b5b5; border: 0px"
+                >
+                  Ketentuan
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <label class="form-check-label" for="CheckboxDefault1">
+                    Disarankan
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="CheckboxDefault"
+                      id="CheckboxDefault1"
+                      style="margin-left: 130px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="CheckboxDefault1">
+                    Bekas - Seperti baru
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="CheckboxDefault"
+                      id="CheckboxDefault1"
+                      style="margin-left: 65px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="CheckboxDefault1">
+                    Bekas - Baik
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="CheckboxDefault"
+                      id="CheckboxDefault1"
+                      style="margin-left: 120px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="CheckboxDefault1">
+                    Bekas - Cukup baik
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      name="CheckboxDefault"
+                      id="CheckboxDefault1"
+                      style="margin-left: 72px"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              class="accordion-item"
+              style="background-color: #b5b5b5; border: 0px"
+            >
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed fw-bold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                  style="background-color: #b5b5b5; border: 0px"
+                >
+                  Tanggal Terdaftar
+                </button>
+              </h2>
+              <div
+                id="collapseThree"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    Semua
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 161px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    24 Jam terakhir
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 102px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    7 Hari terakhir
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 111px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    30 Hari terakhir
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 102px"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div
+              class="accordion-item"
+              style="background-color: #b5b5b5; border: 0px"
+            >
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed fw-bold"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseFour"
+                  aria-expanded="false"
+                  aria-controls="collapseFour"
+                  style="background-color: #b5b5b5; border: 0px"
+                >
+                  Ketersediaan
+                </button>
+              </h2>
+              <div
+                id="collapseFour"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    Tersedia
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 161px"
+                    />
+                  </label>
+                </div>
+                <div class="accordion-body">
+                  <label class="form-check-label" for="RadioDefault1">
+                    Terjual
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="RadioDefault"
+                      id="RadioDefault1"
+                      style="margin-left: 173px"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-lg-4">
+            <a
+              href="#"
+              class="bi bi-grid-fill fw-bold"
+              style="font-size: 40px; text-decoration: none; color: black"
+            >
+              Kategori</a
+            >
+          </div>
+          <div class="mt-2 mb-3 kategori">
+            <div class="d-flex kategori1">
+              <div
+                class="pulsa"
+                style="
+                  height: 37px;
+                  width: 37px;
+                  background-color: black;
+                  border-radius: 100%;
+                "
+              >
+                <span
+                  class="bi bi-phone-vibrate"
+                  style="color: #e0e0e0; font-size: 25px; padding-left: 6px"
+                ></span>
+              </div>
+              <div class="p-2 mt-0 mb-0">
+                <a href="#" style="text-decoration: none; color: black"
+                  >Pulsa & Tagihan</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 mb-3 kategori">
+            <div class="d-flex kategori1">
+              <div
+                class="pulsa"
+                style="
+                  height: 37px;
+                  width: 37px;
+                  background-color: black;
+                  border-radius: 100%;
+                "
+              >
+                <span
+                  class="bi bi-laptop"
+                  style="color: #e0e0e0; font-size: 25px; padding-left: 6px"
+                ></span>
+              </div>
+              <div class="p-2 mt-0 mb-0">
+                <a href="#" style="text-decoration: none; color: black"
+                  >Elektronik</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 mb-3 kategori">
+            <div class="d-flex kategori1">
+              <div
+                class="pulsa"
+                style="
+                  height: 37px;
+                  width: 37px;
+                  background-color: black;
+                  border-radius: 100%;
+                "
+              >
+                <span
+                  class="bi bi-watch"
+                  style="color: #e0e0e0; font-size: 25px; padding-left: 6px"
+                ></span>
+              </div>
+              <div class="p-2 mt-0 mb-0">
+                <a href="#" style="text-decoration: none; color: black"
+                  >Aksesoris</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 mb-3 kategori">
+            <div class="d-flex kategori1">
+              <div
+                class="pulsa"
+                style="
+                  height: 37px;
+                  width: 37px;
+                  background-color: black;
+                  border-radius: 100%;
+                "
+              >
+                <span
+                  class="mdi mdi-hanger"
+                  style="color: #e0e0e0; font-size: 25px; padding-left: 6px"
+                ></span>
+              </div>
+              <div class="p-2 mt-0 mb-0">
+                <a href="#" style="text-decoration: none; color: black"
+                  >Fashion</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="mt-2 mb-3 kategori">
+            <div class="d-flex kategori1">
+              <div
+                class="pulsa"
+                style="
+                  height: 37px;
+                  width: 37px;
+                  background-color: black;
+                  border-radius: 100%;
+                "
+              >
+                <span
+                  class="bi bi-book"
+                  style="color: #e0e0e0; font-size: 25px; padding-left: 6px"
+                ></span>
+              </div>
+              <div class="p-2 mt-0 mb-0">
+                <a href="#" style="text-decoration: none; color: black">Buku</a>
+              </div>
+            </div>
+          </div>
+          <div class="kategori">
+            <div class="d-flex kategori1">
+              <div
+                class="pulsa"
+                style="
+                  height: 37px;
+                  width: 37px;
+                  background-color: black;
+                  border-radius: 100%;
+                "
+              >
+                <span
+                  class="bi bi-tools"
+                  style="color: #e0e0e0; font-size: 25px; padding-left: 6px"
+                ></span>
+              </div>
+              <div class="p-2 mt-0 mb-0">
+                <a href="#" style="text-decoration: none; color: black"
+                  >Parabotan</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="p-4 barang d-flex"
+          style="background-color: #e0e0e0; height: auto"
+        >
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card h-80">
+                <img src="\img\printer.png" class="card-img-top" alt="..." />
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">
+                    Printer merek canon pixma iP1880
+                  </h5>
+                  <p class="card-text" style="font-size: 20px">Pontianak</p>
+                  <h3 class="float-end">Rp 100.000</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

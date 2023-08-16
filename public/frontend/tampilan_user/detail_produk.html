@@ -1,0 +1,526 @@
+<!-- @extends('layout.template')
+@section('konten') -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- {{-- 1. Owl Carousel Min.css --}} -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- {{-- 2. Owl Carousel Theme Min .css --}} -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>detail produk BKas</title>
+    <!-- {{-- Bootstrap --}} -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/detail_produk.css">
+    <link href="/img/Logo_webbkas.png" rel="icon"/>
+  </head>
+  <body>
+    <!-- Awal Navigasi -->
+    <nav class="py-2 navbar bg-body-tertiary">
+    <div class="container">
+        <div class="navbar-bkas">
+            <a href="#">
+                <img src="/img/Logo_BKas.png" alt="">
+            </a>
+        </div>
+        <div class="flex pencarian">
+            <form role="search">
+                <input class="form-control me-5" type="search" placeholder="Cari di BKas.id" aria-label="Search">
+            </form>
+        </div>
+        <div class="lonceng">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16"><path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/></svg>
+            </a>
+        </div>
+        <div class="keranjang">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16"><path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/></svg>
+            </a>
+        </div>
+        <div class="pesan">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16"><path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2Zm13 2.383-4.708 2.825L15 11.105V5.383Zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741ZM1 11.105l4.708-2.897L1 5.383v5.722Z"/></svg>
+        </div>
+        <div class="akun">
+            <a href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="35px" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/></svg>
+            </a>
+        </div>
+    </div>
+    </nav>
+    <!-- {{-- Akhir Navigasi --}} -->
+
+    <!-- Awal Detail Produk -->
+    <style>
+        .detail {
+            background: #E0E0E0;
+        }
+        .detail img {
+            display: block;
+            margin-left: 21px;
+            border-radius: 10px;
+        }
+        .gambar_kecil img {
+            width: 70px;
+            margin-left: 25px;
+            margin-top: 20px ;
+            margin-bottom: 20px;
+            border-radius: 10;
+        }
+        .tabel-stok-kondisi td {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .tabel-stok-kondisi th {
+            font-size: 30px;
+        }
+
+        .product-description {
+            width: 750px;
+            height: 200px;
+            overflow: auto; 
+            border: 1px solid #ccc;
+            padding: 10px; 
+            margin-left: 55px;
+            margin-bottom: 10px;
+            background: white;
+        }
+
+        .product-description p {
+            font-size: 20px;
+        }
+    </style>
+    <div class="container mt-4 detail">
+        <div class="d-flex">
+            <div class="pt-4 ps-4">
+                <img src="/img/kamera.png" alt="#" width="350px" height="350px">
+                <div class="gambar_kecil d-flex">
+                    <div class="owl-carousel owl-theme" style="width: 370px;">
+                        <div class="item">
+                            <img src="/img/kipas.png" alt="">
+                        </div>
+
+                        <div class="item">
+                            <img src="/img/kipas.png" alt="">
+                        </div>
+
+                        <div class="item">
+                            <img src="/img/kipas.png" alt="">
+                        </div>
+
+                        <div class="item">
+                            <img src="/img/kipas.png" alt="">
+                        </div>
+
+                        <div class="item">
+                            <img src="/img/kipas.png" alt="">
+                        </div>
+
+                        <div class="item">
+                            <img src="/img/kipas.png" alt="">
+                        </div>
+
+                        <div class="item">
+                            <img src="/img/kipas.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="ms-5 pt-4">
+                <h1 class="mb-4" style="font-size:60px;">Camera CANON 700D + Lensa Youngno</h1>
+                <h2 class="pt-1">RP 900.000</h2>
+                <h3 class="pb-2" style="color: #858585; text-decoration: line-through;">RP 3.500.000</h3>
+                <div class="tabel-stok-kondisi">
+                    <table>
+                        <tr>
+                            <td>Ketersediaan Barang</td>
+                            <td>:</td>
+                            <th>Ada</th>
+                        </tr>
+                        <tr>
+                            <td>Kondisi</td>
+                            <td>:</td>
+                            <th>Bekas - Baik</th>
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table class="mt-4">
+                        <tr>
+                            <td>
+                                <button class="bi bi-cart4" style="background: #A4BD47; color:white; padding: 10px; border:none; font-size:30px; margin-right: 25px; width: 350px; height: 75px">
+                                    Masukan Keranjang
+                                </button>
+                            </td>
+                            <td>
+                                <button class="bi bi-chat-dots" style="background: #A4BD47; color:white; padding: 10px; border:none; font-size:30px; margin-right: 25px; width: 75px; height: 75px"></button>
+                            </td>
+                            <td>
+                                <button class="bi bi-share-fill" style="background: #A4BD47; color:white; padding: 10px; border:none; font-size:30px; margin-right: 25px; width: 75px; height: 75px"></button>
+                            </td>
+                            <td>
+                                <button class="bbi bi-three-dots" style="background: #A4BD47; color:white; padding: 10px; border:none; font-size:30px; margin-right: 25px; width: 75px; height: 75px"></button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="ms-5 d-flex" style="width: 340px;">
+                <span class="bi bi-heart" style="color: #858585; font-size:25px;"> 43</span>
+                <h4 style="margin-left:167px;">Deskripsi :</h4>
+            </div>
+            <div>
+                <div class="product-description">
+                    <p>Di jual Camera DSLR: Canon <br> Jenis: 700 D <br> Kelengkapan : <br> 1. Tas Camera <br> 2. Antigores Lensa <br> 3. Lensa Youngno 35Mm f/2 auto bokeh <br> 4. BateraiKondisi Bekas (baik)</p>
+                </div>
+            </div>
+        </div>
+        <div class="pb-2 ps-4">
+            <p style="color: #606060; font-size:20px;">Ditawarkan di Pontianak</p>
+        </div>
+    </div>
+    <!-- Akhir Detail Produk -->
+
+    <div class="container d-flex" style="margin-right: 83px;">
+        <div class="me-2">
+        <!-- Awal Informasi Penjual -->
+        <style>
+            .informasi_penjual {
+                width: 655px;
+                background: #E0E0E0;
+            }
+        </style>
+        <div class="container informasi_penjual">
+            <div class="mt-4 mb-2">
+                <div class="ps-4 py-2">
+                    <div class="row justify-content-start">
+                        <div class="col-sm-8 mt-2">
+                            <h4>Informasi Penjual</h4>
+                        </div>
+                        <div class="col-4 text-end">
+                            <button class="bi bi-three-dots" style="font-size: 30px; background: #E0E0E0; border:none;"></button>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-start">
+                        <div class="col-sm-1" style="width: 60px;">
+                            <button class="bi bi-person-fill" style="background:#A4BD47; color:white; border-radius:100%; font-size: 30px; border:none; width: 50px; height: 50px;"></button>
+                        </div>
+                        <div class="col-7 mt-2">
+                            <h4>Muhammad Roshi Saputra</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Akhir Informasi Penjual -->
+
+        <!-- Awal Komentar -->
+        <style>
+            .komentar {
+                width: 655px;
+                background:#E0E0E0;
+            }
+            .komentar_2 {
+                height: 500px;
+                overflow: auto;
+                overflow-x: hidden;
+            }
+        </style>
+        <div class="container komentar mb-5">
+            <div class="row justify-content-start">
+                <div class="col-sm-8 mt-2">
+                    <h4>Komentar</h4>
+                </div>
+                <div class="col-4 mt-2">
+                    <h4 style="color: #999;">45 Komentar</h4>
+                </div>
+            </div>
+            <div class="komentar_2">
+                <div class="container py-1" style="background: #B5B5B5;">
+                    <div class="my-1" style="background: #D9D9D9;">
+                        <div class="col text-end">
+                            <button class="bi bi-three-dots" style="font-size: 30px; background: #D9D9D9; border:none;"></button>
+                        </div>
+                        <div class="col align-self-start ms-2">
+                            <table>
+                                <tr>
+                                    <td rowspan="3">
+                                        <button class="bi bi-person-fill" style="background:#A4BD47; color:white; border-radius:100%; font-size: 45px; border:none; width: 65px; height: 65px;"></button>
+                                    </td>
+                                    <td>
+                                        <h6 class="ps-2">
+                                            Muhammad Dzaki
+                                        </h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6 class="ps-2" style="color:#999999">
+                                            13-03-2023 17:30
+                                        </h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6 class="ps-2">
+                                            apakah barang ini masih ada?
+                                        </h6>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr>
+                        <div style="padding-left: 300px;">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h6 class="px-2">
+                                            Muhammad Roshi Saputra
+                                        </h6>
+                                    </td>
+                                    <td rowspan="3">
+                                        <button class="bi bi-person-fill" style="background:#A4BD47; color:white; border-radius:100%; font-size: 45px; border:none; width: 65px; height: 65px;"></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6 class="px-2" style="color:#999999">
+                                            13-03-2023 19:12
+                                        </h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6 class="px-2">
+                                            Ya masih ada
+                                        </h6>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container py-1" style="background: #B5B5B5;">
+                    <div class="my-1" style="background: #D9D9D9;">
+                        <div class="col text-end">
+                            <button class="bi bi-three-dots" style="font-size: 30px; background: #D9D9D9; border:none;"></button>
+                        </div>
+                        <div class="col align-self-start ms-2">
+                            <table>
+                                <tr>
+                                    <td rowspan="3">
+                                        <button class="bi bi-person-fill" style="background:#A4BD47; color:white; border-radius:100%; font-size: 45px; border:none; width: 65px; height: 65px;"></button>
+                                    </td>
+                                    <td>
+                                        <h6 class="ps-2">
+                                            Muhammad Dzaki
+                                        </h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6 class="ps-2" style="color:#999999">
+                                            13-03-2023 17:30
+                                        </h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6 class="ps-2">
+                                            apakah barang ini masih ada?
+                                        </h6>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <hr>
+                        <div style="padding-left: 300px;">
+                            <table>
+                                <tr>
+                                    <td>
+                                        <h6 class="px-2">
+                                            Muhammad Roshi Saputra
+                                        </h6>
+                                    </td>
+                                    <td rowspan="3">
+                                        <button class="bi bi-person-fill" style="background:#A4BD47; color:white; border-radius:100%; font-size: 45px; border:none; width: 65px; height: 65px;"></button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6 class="px-2" style="color:#999999">
+                                            13-03-2023 19:12
+                                        </h6>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h6 class="px-2">
+                                            Ya masih ada
+                                        </h6>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Akhir Komentar -->
+        </div>
+
+        <div>
+            <!-- Awal Penawaran lain dari Penjual -->
+            <style>
+                .penawaran {
+                    width: 655px;
+                    background:#E0E0E0;
+                }
+                .penawaran_2 {
+                    background: #B5B5B5; 
+                    width:600px;
+                    height: 395px;
+                    overflow: auto;  
+                }
+            </style>
+            <div class="container penawaran">
+                <div class="mt-4 mb-2">
+                    <div class="ps-4 py-2">
+                        <div class="row justify-content-start">
+                            <div class="col-sm-8 mt-2">
+                                <h4>Penawaran lain dari Penjual</h4>
+                            </div>
+                            <div class="col-4 text-end">
+                                <button class="bi bi-three-dots" style="font-size: 30px; background: #E0E0E0; border:none;"></button>
+                            </div>
+                        </div>
+                        <div class="py-3 penawaran_2">
+                            <div class="d-flex ">
+                                <div class="col ms-4">
+                                    <div class="card" style="width: 345px; height: 345px;">
+                                        <img src="/img/setrika1.png" class="card-img-top" width="50px" height="200px">
+                                        <div class="card-body">
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <h5 class="card-title">Setrika merek sanyako 18 wat</h5>
+                                                <p>Pontianak</p>
+                                                <h5 class="text-end">Rp 60.000</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col ms-4">
+                                    <div class="card" style="width: 345px; height: 345px;">
+                                        <img src="/img/dispenser1.png" class="card-img-top" width="50px" height="200px">
+                                        <div class="card-body">
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <h5 class="card-title">Dispenser panas dan dingin dengan 30 wat</h5>
+                                                <p>Pontianak</p>
+                                                <h5 class="text-end">Rp 135.000</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col ms-4">
+                                    <div class="card" style="width: 345px; height: 345px;">
+                                        <img src="/img/sepatu.png" class="card-img-top" width="50px" height="200px">
+                                        <div class="card-body">
+                                            <a href="#" class="text-decoration-none text-dark">
+                                                <h5 class="card-title">Sepatu Hommy Pad - Untuk anak sekolah....</h5>
+                                                <p>Pontianak</p>
+                                                <h5 class="text-end">Rp 50.000</h5>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Akhir Penawaran lain dari Penjual -->
+
+            <!-- Awal Promosi -->
+                <style>
+                .promosi {
+                    width: 655px;
+                    height: 200px;
+                    background:#E0E0E0;
+                    overflow: auto;
+                }
+                .promosi p {
+                    color: #999999;
+                }
+            </style>
+            <div class="container promosi pb-5">
+                <div class="d-flex align-items-end flex-column" style="height: 50px;">
+                    <div class="">
+                        <button class="bi bi-three-dots" style="font-size: 30px; background: #E0E0E0; border:none;"></button>
+                    </div>
+                </div>
+                <div class="row justify-content-start mb-4">
+                    <a href="" style="width: 85px;">
+                        <div class="col-2">
+                        <img src="/img/pp_promosi.png" alt="" style="border-radius:100%; border:none; width: 65px; height: 65px;">
+                    </div>
+                    </a>
+                    <div class="col-10">
+                        <a style="text-decoration:none; color:black;" href="">
+                            <h5>Samsung</h5>
+                        </a>
+                        <p>share the epic moment with the new phone</p>
+                        <a href=""><img src="/img/harga_promosi.png" alt="" width="520px"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Akhir Promosi -->
+        </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- {{-- carousel detai produk --}}
+    {{-- Lets include cdn file --}}
+    {{-- 0. Jquery cdn --}} -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- {{-- 1. Owl Carousel min .js --}} -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- {{-- Init Owl Carousel --}} -->
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop:false,
+            margin:20,
+            nav:false,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:2
+                },
+                1000:{
+                    items:3
+                }
+            }
+        })
+    </script>
+  </body>
+</html>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  </body>
+</html>
+<!-- @endsection -->
