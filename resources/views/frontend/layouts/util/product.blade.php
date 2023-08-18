@@ -4,20 +4,17 @@
     </form>
     <div class="product_img">
         <a href="#">
-            <img src="{{ asset('frontend/assets/images/product_img1.jpg') }}"
-                alt="product_img1" />
+            <img src="{{ asset('frontend/assets/images/product_img1.jpg') }}" alt="product_img1" />
         </a>
         <div class="product_action_box">
             <ul class="list_none pr_action_btn">
                 <li class="add-to-cart">
-                    <a href="javascript:void(0);"
-                        onclick="document.getElementById('{{ $data->ulid }}').submit()">
+                    <a href="javascript:void(0);" onclick="document.getElementById('{{ $data->ulid }}').submit()">
                         <i class="icon-basket-loaded"></i>
                         Add To Cart</a>
                 </li>
                 <li>
-                    <a href="shop-quick-view.html" class="popup-ajax"><i
-                            class="icon-magnifier-add"></i></a>
+                    <a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a>
                 </li>
                 <li>
                     <a href="#"><i class="icon-heart"></i></a>
@@ -54,12 +51,10 @@
                         Add To Cart</a>
                 </li>
                 <li>
-                    <a href="shop-compare.html" class="popup-ajax"><i
-                            class="icon-shuffle"></i></a>
+                    <a href="shop-compare.html" class="popup-ajax"><i class="icon-shuffle"></i></a>
                 </li>
                 <li>
-                    <a href="shop-quick-view.html" class="popup-ajax"><i
-                            class="icon-magnifier-add"></i></a>
+                    <a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a>
                 </li>
                 <li>
                     <a href="#"><i class="icon-heart"></i></a>
