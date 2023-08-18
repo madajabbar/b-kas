@@ -3,10 +3,13 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -22,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'ulid',
     ];
 
     /**
@@ -45,5 +49,17 @@ class User extends Authenticatable
     ];
     public function role(){
         return $this->belongsTo(Role::class);
+    }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            try {
+                $model->ulid = Str::ulid();
+            } catch (Exception $e) {
+                // abort(500, $e->getMessage());
+            }
+        });
     }
 }

@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Support\Str;
 class Product extends Model
 {
     use HasFactory;
@@ -21,5 +22,22 @@ class Product extends Model
     }
     public function productImage(){
         return $this->hasMany(ProductImage::class);
+    }
+
+
+    public function scopeUlid($query, $type){
+        return $query->where('ulid', $type);
+    }
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            try {
+                $model->ulid = Str::ulid();
+            } catch (Exception $e) {
+                abort(500, $e->getMessage());
+            }
+        });
     }
 }

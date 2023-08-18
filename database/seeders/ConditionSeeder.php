@@ -13,14 +13,16 @@ class ConditionSeeder extends Seeder
      */
     public function run(): void
     {
-        $data = [
+        Condition::create(
             [
                 'name' => 'Baru',
             ],
+        );
+        Condition::create(
             [
                 'name' => 'Bekas',
             ],
-        ];
-        Condition::insert($data);
+        );
+
     }
 }

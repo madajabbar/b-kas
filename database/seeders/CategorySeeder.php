@@ -13,37 +13,47 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        // Get the
-        $data = [
+        Category::create(
             [
                 'name' => 'Pulsa dan Tagihan',
                 'description' => 'Pulsa dan Tagihan'
             ],
+        );
+        Category::create(
             [
                 'name' => 'Laptop',
                 'description' => 'Laptop'
             ],
+        );
+        Category::create(
             [
                 'name' => 'Aksesoris',
                 'description' => 'Aksesoris'
             ],
+        );
+        Category::create(
             [
                 'name' => 'Fashion',
                 'description' => 'Fashion'
             ],
+        );
+        Category::create(
             [
                 'name' => 'Buku',
                 'description' => 'Buku'
             ],
+        );
+        Category::create(
             [
                 'name' => 'Perabotan',
                 'description' => 'Perabotan'
             ],
+        );
+        Category::create(
             [
                 'name' => 'Hobi dan Koleksi',
                 'description' => 'Hobi dan Koleksi'
             ],
-        ];
-        Category::insert($data);
+        );
     }
 }

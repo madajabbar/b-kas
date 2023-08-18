@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->ulid('ulid');
             $table->integer('total_payment');
             $table->string('payment_type');
             $table->enum('status',['success','pending','failed'])->default('pending');
