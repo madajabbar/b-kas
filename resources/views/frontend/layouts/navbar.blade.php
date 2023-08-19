@@ -2,7 +2,7 @@
     <div class="bottom_header dark_skin main_menu_uppercase">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="{{route('home')}}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     <img class="logo_light" src="{{ asset('frontend/assets/images/logo_light.png') }}" alt="logo" />
                     <img class="logo_dark" src="{{ asset('frontend/assets/images/logo_dark.png') }}" alt="logo" />
                 </a>
@@ -23,10 +23,10 @@
                             <div class="dropdown-menu dropdown-reverse">
                                 <ul>
                                     @foreach ($category as $data)
-                                    <li>
-                                        <a class="dropdown-item menu-link" href="#">{{$data->name}}</a>
-                                    </li>
-                                        @endforeach
+                                        <li>
+                                            <a class="dropdown-item menu-link" href="#">{{ $data->name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </li>
@@ -62,8 +62,8 @@
                                     </li>
                                     <li>
                                         <a href="#" class="item_remove"><i class="ion-close"></i></a>
-                                        <a href="#"><img src="assets/images/cart_thamb2.jpg"
-                                                alt="cart_thumb2">Ornare sed consequat</a>
+                                        <a href="#"><img src="assets/images/cart_thamb2.jpg" alt="cart_thumb2">Ornare
+                                            sed consequat</a>
                                         <span class="cart_quantity"> 1 x <span class="cart_amount"> <span
                                                     class="price_symbole">$</span></span>81.00</span>
                                     </li>
@@ -78,13 +78,20 @@
                                 </div>
                             </div>
                         </li>
-                    @endauth
-                    <li><a href="login.html">
-                            @auth
+                        <li>
+                            <a href="login.html">
                                 <i class="ti-user"></i>
-                            @endauth
-                            <span>Login</span>
-                        </a></li>
+                            </a>
+                        </li>
+                    @endauth
+                    @if (!Auth::check())
+                        <li>
+                            <a type="button" data-toggle="modal"
+                                data-target="#onload-popup">
+                                Login
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </nav>
         </div>

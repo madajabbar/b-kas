@@ -6,32 +6,36 @@
                     <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true"><i class="ion-ios-close-empty"></i></span>
                     </button>
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="popup_content">
-                                <div class="popup-text">
-                                    <div class="heading_s3 text-center">
-                                        <h4>Subscribe and Get 25% Discount!</h4>
-                                    </div>
-                                    <p>Subscribe to the newsletter to receive updates about new products.</p>
-                                </div>
-                                <form method="post" class="rounded_input">
-                                    <div class="form-group mb-3">
-                                        <input name="email" required type="email" class="form-control"
-                                            placeholder="Enter Your Email">
-                                    </div>
-                                    <div class="form-group mb-3">
-                                        <button class="btn btn-fill-line btn-block text-uppercase btn-radius"
-                                            title="Subscribe" type="submit">Subscribe</button>
-                                    </div>
-                                </form>
-                                <div class="chek-form">
-                                    <div class="custome-checkbox">
-                                        <input class="form-check-input" type="checkbox" name="checkbox"
-                                            id="exampleCheckbox3" value="">
-                                        <label class="form-check-label" for="exampleCheckbox3"><span>Don't show this
-                                                popup again!</span></label>
-                                    </div>
+                    <div class="login_register_wrap section">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col">
+                                        <div class="padding_eight_all bg-white">
+                                            <div class="heading_s1">
+                                                <h3>Login</h3>
+                                            </div>
+                                            <form method="post">
+                                                <div class="form-group mb-3">
+                                                    <input type="text" required="" class="form-control" name="email" placeholder="Your Email">
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <input class="form-control" required="" type="password" name="password" placeholder="Password">
+                                                </div>
+                                                <div class="login_footer form-group mb-3">
+                                                    <div class="chek-form">
+                                                        <div class="custome-checkbox">
+                                                            <input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="">
+                                                            <label class="form-check-label" for="exampleCheckbox1"><span>Remember me</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <a href="#">Forgot password?</a>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <button type="submit" class="btn btn-fill-out btn-block" name="login">Log in</button>
+                                                </div>
+                                            </form>
+                                            <div class="form-note text-center">Don't Have an Account? <a href="signup.html">Sign up now</a></div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
