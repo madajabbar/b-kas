@@ -15,7 +15,6 @@ class UserController extends Controller
     use DataTrait;
     public function index()
     {
-        $data['category'] = $this->category();
         $data['user'] = Auth::user() ? Auth::user() : User::where('role_id',1)->first();
         return view('frontend.pages.user.index',$data);
     }

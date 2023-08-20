@@ -1,5 +1,21 @@
 @extends('frontend.layouts.app')
 @section('css')
+    <style>
+        /* Custom CSS for paginator colors */
+        .pagination .page-item .page-link {
+            color: #c7ea46;
+            /* Change to your desired color */
+        }
+
+        .pagination .page-item.active .page-link {
+            background-color: #c7ea46;
+            /* Change to your desired active link color */
+            border-color: white;
+            /* Change to your desired active link color */
+            color: white;
+            /* Change to your desired active link text color */
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -45,20 +61,7 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <ul class="pagination mt-3 justify-content-center pagination_style1">
-                                <li class="page-item active">
-                                    <a class="page-link" href="#">1</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">3</a>
-                                </li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="linearicons-arrow-right"></i></a>
-                                </li>
-                            </ul>
+                            {{ $product->links() }}
                         </div>
                     </div>
                 </div>
@@ -71,4 +74,32 @@
 
 
 @section('js')
+    <script>
+        $(document).ready(function() {
+            $.get('/api/category', function(data) {
+                var widgetCategory = $('#widgetCategory');
+                data.forEach(function(category) {
+                    var form = $('<form>')
+                        .attr('action', ' ') // Set your desired action URL here
+                        .attr('method', 'GET');
+
+                    var categoryInput = $('<input>')
+                        .attr('type', 'hidden')
+                        .attr('name', 'category_id') // Use the appropriate input name
+                        .val(category.slug); // Use the category ID or relevant identifier
+
+                    var submitButton = $('<button>')
+                        .addClass('btn categories_name border-none')
+                        .attr('type', 'submit')
+                        .text(category.name);
+
+                    form.append(categoryInput, submitButton);
+                    var categoryItem = $('<li>').append(form);
+                    widgetCategory.append(categoryItem);
+                });
+            });
+        });
+    </script>
+
+    <!-- jquery-ui -->
 @endsection

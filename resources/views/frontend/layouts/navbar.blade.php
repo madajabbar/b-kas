@@ -3,8 +3,8 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img class="logo_light" src="{{ asset('frontend/assets/images/logo_light.png') }}" alt="logo" />
-                    <img class="logo_dark" src="{{ asset('frontend/assets/images/logo_dark.png') }}" alt="logo" />
+                    <img class="logo_light" src="{{ asset('logo_Bkas.png') }}" alt="logo" />
+                    <img class="logo_dark" src="{{ asset('logo_Bkas.png') }}" alt="logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-expanded="false">
@@ -13,20 +13,16 @@
                 <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="dropdown">
-                            <a class="nav-link active" href="#">Home</a>
+                            <a class="nav-link active" href="{{route('home')}}">Home</a>
                         </li>
                         <li class="dropdown">
-                            <a class=" nav-link" href="#" data-bs-toggle="dropdown">Procucts</a>
+                            <a class=" nav-link" href="{{route('product')}}" >Procucts</a>
                         </li>
                         <li class="dropdown">
                             <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown">Category</a>
                             <div class="dropdown-menu dropdown-reverse">
-                                <ul>
-                                    @foreach ($category as $data)
-                                        <li>
-                                            <a class="dropdown-item menu-link" href="#">{{ $data->name }}</a>
-                                        </li>
-                                    @endforeach
+                                <ul id="categoryDropdown">
+                                    <!-- Categories will be populated here -->
                                 </ul>
                             </div>
                         </li>
@@ -71,23 +67,23 @@
                                 <div class="cart_footer">
                                     <p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> <span
                                                 class="price_symbole">$</span></span>159.00</p>
-                                    <p class="cart_buttons"><a href="#"
-                                            class="btn btn-fill-line btn-radius view-cart">View Cart</a><a href="#"
+                                    <p class="cart_buttons"><a href="{{route('cart.index')}}"
+                                            class="btn btn-fill-line btn-radius view-cart">View Cart</a><a href="{{route('checkout.index')}}"
                                             class="btn btn-fill-out btn-radius checkout">Checkout</a>
                                     </p>
                                 </div>
                             </div>
                         </li>
                         <li>
-                            <a href="login.html">
+                            <a href="{{route('user.index')}}">
                                 <i class="ti-user"></i>
                             </a>
                         </li>
                     @endauth
                     @if (!Auth::check())
                         <li>
-                            <a type="button" data-toggle="modal"
-                                data-target="#onload-popup">
+                            <a type="button" data-bs-toggle="modal"
+                                data-bs-target="#onload-popup">
                                 Login
                             </a>
                         </li>

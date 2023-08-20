@@ -33,7 +33,11 @@
                                     details</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="login.html"><i class="ti-lock"></i>Logout</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                                <a class="nav-link" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i class="ti-lock"></i>Logout</a>
                             </li>
                         </ul>
                     </div>
@@ -44,7 +48,7 @@
                             aria-labelledby="dashboard-tab">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3>Dashboard</h3>
+                                    <h3>Halo {{$user->name}}</h3>
                                 </div>
                                 <div class="card-body">
                                     <p>
@@ -159,36 +163,27 @@
                                     <h3>Account Details</h3>
                                 </div>
                                 <div class="card-body">
-                                    <p>
-                                        Already have an account?
-                                        <a href="#">Log in instead!</a>
-                                    </p>
-                                    <form method="post" name="enq">
+                                    <form method="post">
                                         <div class="row">
-                                            <div class="form-group col-md-6 mb-3">
-                                                <label>First Name
+                                            <div class="form-group col-md-12 mb-3">
+                                                <label>Name
                                                     <span class="required">*</span></label>
                                                 <input required="" class="form-control" name="name"
-                                                    type="text" />
+                                                    type="text" value="{{$user->name}}" />
                                             </div>
-                                            <div class="form-group col-md-6 mb-3">
-                                                <label>Last Name
-                                                    <span class="required">*</span></label>
-                                                <input required="" class="form-control" name="phone" />
-                                            </div>
-                                            <div class="form-group col-md-12 mb-3">
+                                            {{-- <div class="form-group col-md-12 mb-3">
                                                 <label>Display Name
                                                     <span class="required">*</span></label>
                                                 <input required="" class="form-control" name="dname"
                                                     type="text" />
-                                            </div>
+                                            </div> --}}
                                             <div class="form-group col-md-12 mb-3">
                                                 <label>Email Address
                                                     <span class="required">*</span></label>
                                                 <input required="" class="form-control" name="email"
-                                                    type="email" />
+                                                    type="email" value="{{$user->email}}" />
                                             </div>
-                                            <div class="form-group col-md-12 mb-3">
+                                            {{-- <div class="form-group col-md-12 mb-3">
                                                 <label>Current Password
                                                     <span class="required">*</span></label>
                                                 <input required="" class="form-control" name="password"
@@ -205,7 +200,7 @@
                                                     <span class="required">*</span></label>
                                                 <input required="" class="form-control" name="cpassword"
                                                     type="password" />
-                                            </div>
+                                            </div> --}}
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn btn-fill-out" name="submit"
                                                     value="Submit">

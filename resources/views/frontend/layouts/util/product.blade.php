@@ -14,7 +14,7 @@
                         Add To Cart</a>
                 </li>
                 <li>
-                    <a href="shop-quick-view.html" class="popup-ajax"><i class="icon-magnifier-add"></i></a>
+                    <a href="{{route('quickview',$data->ulid)}}" class="popup-ajax"><i class="icon-magnifier-add"></i></a>
                 </li>
                 <li>
                     <a href="#"><i class="icon-heart"></i></a>

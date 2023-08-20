@@ -2,20 +2,14 @@
     <div class="sidebar">
         <div class="widget">
             <h5 class="widget_title">Categories</h5>
-            <ul class="widget_categories">
-                @foreach ($category as $data)
-                    <li>
-                        <a href="#"><span class="categories_name">{{$data->name}}</span><span
-                                class="categories_num">({{count($data->product)}})</span></a>
-                    </li>
-                @endforeach
+            <ul id="widgetCategory" class="widget_categories">
             </ul>
         </div>
-        <div class="widget">
+        {{-- <div class="widget">
             <h5 class="widget_title">Filter</h5>
             <div class="filter_price">
-                <div id="price_filter" data-min="0" data-max="500" data-min-value="50"
-                    data-max-value="300" data-price-sign="$"></div>
+                <div id="price_filter" data-min="0" data-max="500000" data-min-value="50000"
+                    data-max-value="10000000" data-price-sign="Rp."></div>
                 <div class="price_range">
                     <span>Price:
                         <span id="flt_price"></span></span>
@@ -23,7 +17,7 @@
                     <input type="hidden" id="price_second" />
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="widget">
             <h5 class="widget_title">Condition</h5>
             <ul class="list_brand">
