@@ -27,7 +27,7 @@
             </header>
 
             <div class="page-heading">
-                <h3>Title</h3>
+                <h3>{{$title}}</h3>
             </div>
             @yield('content')
 

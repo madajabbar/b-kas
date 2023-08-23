@@ -42,7 +42,7 @@
             var table = $('.table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('category.table') }}",
+                ajax: "{{ route('condition.table') }}",
                 columns: [{
                         data: 'name',
                         name: 'name'

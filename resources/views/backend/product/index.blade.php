@@ -9,6 +9,7 @@
 @section('content')
     <div class="page-heading">
         @include('backend.layouts.page-title')
+
         <!-- Basic Tables start -->
         <section class="section">
             <div class="card">
@@ -18,12 +19,18 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Product</th>
+                                <th>Description</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Discount</th>
+                                <th>Discount Status</th>
+                                <th>Category</th>
+                                <th>Condition</th>
+                                <th>User</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-
                         </tbody>
                     </table>
                 </div>
@@ -42,14 +49,51 @@
             var table = $('.table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('category.table') }}",
+                ajax: {
+                        url:"{{ route('product.table') }}",
+                        data: function(data){
+                            data.category = "{{$category}}";
+                            data.condition = "{{$condition}}";
+                            data.user = "{{$user}}";
+
+                            return data;
+                        }
+                },
                 columns: [{
                         data: 'name',
                         name: 'name'
                     },
                     {
-                        data: 'product',
-                        name: 'product'
+                        data: 'description',
+                        name: 'description'
+                    },
+                    {
+                        data: 'quantity',
+                        name: 'quantity'
+                    },
+                    {
+                        data: 'price',
+                        name: 'price'
+                    },
+                    {
+                        data: 'discount',
+                        name: 'discount'
+                    },
+                    {
+                        data: 'discount_status',
+                        name: 'discount_status'
+                    },
+                    {
+                        data: 'category.name',
+                        name: 'category.name'
+                    },
+                    {
+                        data: 'condition.name',
+                        name: 'condition.name'
+                    },
+                    {
+                        data: 'user.name',
+                        name: 'user.name'
                     },
                     {
                         data: 'action',

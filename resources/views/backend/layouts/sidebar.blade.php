@@ -3,7 +3,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-between align-items-center">
                 <div class="logo">
-                    <a href="index.html">B-Kas</a>
+                    <a href="{{route('home')}}">B-Kas</a>
                 </div>
                 <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -44,21 +44,21 @@
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
 
-                <li class="sidebar-item active ">
+                <li class="sidebar-item {{$title == 'Dashboard' ? 'active':''}} ">
                     <a href="{{route('dashboard.index')}}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{$title == 'User' ? 'active':''}} ">
                     <a href="{{route('user.index')}}" class='sidebar-link'>
                         <i class="bi bi-people-fill"></i>
                         <span>User</span>
                     </a>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{$title == 'Category' ? 'active':''}} ">
                     <a href="{{route('category.index')}}" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
                         <span>Category</span>
@@ -82,8 +82,8 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item">
-                    <a href="#" class='sidebar-link'>
+                <li class="sidebar-item {{$title == 'Condition' ? 'active':''}} ">
+                    <a href="{{route('condition.index')}}" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>Condtition</span>
                     </a>
@@ -106,7 +106,7 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item">
+                <li class="sidebar-item {{$title == 'Transaction' ? 'active':''}} ">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-hexagon-fill"></i>
                         <span>Transaction</span>
@@ -133,8 +133,8 @@
                     </ul>
                 </li>
 
-                <li class="sidebar-item  ">
-                    <a href="form-layout.html" class='sidebar-link'>
+                <li class="sidebar-item {{$title == 'Product' ? 'active':''}} ">
+                    <a href="{{route('product.index')}}" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Product</span>
                     </a>

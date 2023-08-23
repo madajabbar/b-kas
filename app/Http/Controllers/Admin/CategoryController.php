@@ -10,7 +10,8 @@ use Yajra\DataTables\Facades\Datatables;
 class CategoryController extends Controller
 {
     public function index(){
-        return view('backend.category.index');
+        $data['title'] = 'Category';
+        return view('backend.category.index',$data);
     }
     public function datatable(Request $request){
         $user = Category::query();

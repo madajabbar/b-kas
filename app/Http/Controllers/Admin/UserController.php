@@ -14,7 +14,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('backend.user.index');
+        $data['title'] = 'User';
+        return view('backend.user.index',$data);
     }
     public function datatable(Request $request)
     {
