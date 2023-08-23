@@ -50,6 +50,12 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo(Role::class);
     }
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
+    public function cart(){
+        return $this->hasMany(Cart::class);
+    }
     protected static function boot()
     {
         parent::boot();

@@ -75,7 +75,7 @@
                             </div>
                         </li>
                         <li>
-                            <a href="{{route('user.index')}}">
+                            <a href="{{route('user')}}">
                                 <i class="ti-user"></i>
                             </a>
                         </li>
