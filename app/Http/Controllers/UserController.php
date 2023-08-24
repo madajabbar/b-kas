@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Traits\DataTrait;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -65,5 +66,11 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function showProduct(Request $request){
+        $data['product'] = Product::ulid($request->product)->first();
+
+        return view('frontend.pages.user.product-edit', $data);
     }
 }

@@ -46,4 +46,7 @@ class ProductController extends Controller
             ->rawColumns(['action'])
             ->make(true);
     }
+    public function store(){
+        
+    }
 }

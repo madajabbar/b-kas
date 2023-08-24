@@ -34,6 +34,7 @@ Route::get('/quickview/{product}', [HomeController::class, 'quickView'])->name('
 Route::get('/user',[UserController::class,'index'])->name('user');
 Route::get('/product', [HomeController::class, 'product'])->name('product');
 Route::get('/product/detail', [HomeController::class, 'productDetail'])->name('productDetail');
+Route::get('/user/product', [UserController::class, 'showProduct'])->name('user.product');
 Route::prefix('admin')->group(function(){
     Route::resource('dashboard', DashboardController::class);
     Route::resource('user', AdminUserController::class);

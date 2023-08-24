@@ -56,6 +56,9 @@ class User extends Authenticatable
     public function cart(){
         return $this->hasMany(Cart::class);
     }
+    public function userData(){
+        return $this->hasOne(UserData::class);
+    }
     protected static function boot()
     {
         parent::boot();
