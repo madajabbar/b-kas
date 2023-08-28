@@ -9,38 +9,48 @@
                     <div class="form-group col-md-12 mb-3">
                         <label>Name
                             <span class="required">*</span></label>
-                        <input required="" class="form-control" name="name"
-                            type="text" value="{{$user->name}}" />
+                        <input required="" class="form-control" name="name" type="text"
+                            value="{{ $user->name }}" />
                     </div>
                     <div class="form-group col-md-12 mb-3">
                         <label>Full Name
                             <span class="required">*</span></label>
-                        <input required="" class="form-control" name="dname"
-                            type="text" value="{{$user->userData->fullname}}" />
+                        <input required="" class="form-control" name="fullname" type="text"
+                            value="{{ $user->userData->fullname }}" />
                     </div>
                     <div class="form-group col-md-12 mb-3">
                         <label>Email Address
                             <span class="required">*</span></label>
-                        <input required="" class="form-control" name="email"
-                            type="email" value="{{$user->email}}" />
+                        <input required="" class="form-control" name="email" type="email"
+                            value="{{ $user->email }}" />
                     </div>
                     <div class="form-group col-md-12 mb-3">
                         <label>Postal Code
                             <span class="required">*</span></label>
-                        <input required="" class="form-control" name="dname"
-                            type="text" value="{{$user->userData->postal_code}}" />
+                        <input required="" class="form-control" name="postal_code" type="text"
+                            value="{{ $user->userData->postal_code }}" />
                     </div>
                     <div class="form-group col-md-12 mb-3">
                         <label>City
                             <span class="required">*</span></label>
-                        <input required="" class="form-control" name="dname"
-                            type="text" value="{{$user->userData->city->name}}" />
+                        <select class="form-control" name="city_id" id="city_id">
+                            @foreach ($city as $data)
+                                <option value="{{ $data->id }}"
+                                    {{ $data->id == $user->userData->city_id ? 'selected' : '' }}>{{ $data->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group col-md-12 mb-3">
-                        <label>City
+                        <label>Province
                             <span class="required">*</span></label>
-                        <input required="" class="form-control" name="dname"
-                            type="text" value="{{$user->userData->province->name}}" />
+                        <select class="form-control" name="province_id" id="province_id">
+                            @foreach ($province as $data)
+                                <option value="{{ $data->id }}"
+                                    {{ $data->id == $user->userData->province_id ? 'selected' : '' }}>{{ $data->name }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     {{-- <div class="form-group col-md-12 mb-3">
                         <label>Current Password
@@ -61,8 +71,7 @@
                             type="password" />
                     </div> --}}
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-fill-out" name="submit"
-                            value="Submit">
+                        <button type="submit" class="btn btn-fill-out" name="submit" value="Submit">
                             Save
                         </button>
                     </div>

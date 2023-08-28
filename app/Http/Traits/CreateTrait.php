@@ -1,9 +1,10 @@
 <?php
-
+namespace App\Http\Traits;
 use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Condition;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Support\Str;
 trait CreateTrait{
     public function createCategory($request){
@@ -61,5 +62,23 @@ trait CreateTrait{
             ]
         );
         return $data;
+    }
+    public function createProduct($request){
+        $data = Product::updateOrCreate(
+            [
+                'id' => $request->id,
+            ],
+            [
+                'name' => $request->name,
+                'description' => $request->description,
+                'quantity' => $request->quantity,
+                'price' => $request->price,
+                'discount' => $request->discount,
+                'discount_status' => $request->discount_status,
+                'category_id'=>$request->category_id,
+                'condition_id' => $request->condition_id,
+                'user_id' => $request->user_id,
+            ]
+        );
     }
 }
