@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
@@ -47,5 +48,24 @@ class CartController extends Controller
     public function delete(Request $request){
         $data = Cart::find($request->id)->delete();
         return redirect()->back();
+    }
+
+    public function checkout(Request $request){
+        $request->validate(
+            [
+                'cart_id' => 'required'
+            ]
+        );
+
+        foreach($request->cart_id as $cart){
+            $cart = Cart::find($cart);
+            $product = Product::find($cart->product_id);
+            if($product->quantity >= $cart->amount){
+                $cart->status = 'checkout';
+                $cart->save();
+            }
+
+        }
+        // return $carts;
     }
 }

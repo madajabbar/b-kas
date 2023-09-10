@@ -26,15 +26,19 @@
                                         <td colspan="12" class="px-0">
                                             <div class="row g-0 align-items-center">
                                                 <div class="col-lg-6 col-md-6  text-start  text-md-end">
-                                                    <button class="btn btn-line-fill btn-sm" type="submit">Update Cart</button>
+                                                    <button class="btn btn-line-fill btn-sm" type="submit">Update
+                                                        Cart</button>
                                                 </div>
                                                 <div class="col-lg-6 col-md-6  text-start  text-md-end">
-                                                    <form action="" method="post">
+                                                    <form action="{{route('cart.checkout')}}" method="post">
+                                                        @csrf
                                                         @foreach ($productList as $cart)
-                                                            <input type="hidden" name="cart_id[]" value="{{$cart->id}}">
+                                                            <input type="hidden" name="cart_id[]"
+                                                                value="{{ $cart->id }}">
                                                         @endforeach
+                                                        <button class="btn btn-line-fill btn-sm"
+                                                            type="submit">Checkout</button>
                                                     </form>
-                                                    <button class="btn btn-line-fill btn-sm" type="submit">Checkout</button>
                                                 </div>
                                             </div>
                                         </td>
@@ -60,10 +64,10 @@
                                             </td>
                                             <td class="product-subtotal" data-title="Total">{{ $cart->total_payment }}</td>
                                             <td class="product-remove" data-title="Remove">
-                                                <form action="{{route('cart.delete')}}" method="get">
-                                                    <input type="hidden" name="id" value="{{$cart->id}}">
-                                                    <button class="remove-product bg-transparent border-none" type="submit"><i
-                                                            class="ti-close"></i></button>
+                                                <form action="{{ route('cart.delete') }}" method="get">
+                                                    <input type="hidden" name="id" value="{{ $cart->id }}">
+                                                    <button class="remove-product bg-transparent border-none"
+                                                        type="submit"><i class="ti-close"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
@@ -124,7 +128,8 @@
                                 <tbody>
                                     <tr>
                                         <td class="cart_total_label">Shipping</td>
-                                        <td class="cart_total_amount">Rp. {{ $ongkir['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'] }}</td>
+                                        <td class="cart_total_amount">Rp.
+                                            {{ $ongkir['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'] }}</td>
                                     </tr>
                                     <tr>
                                         <td class="cart_total_label">Cart Subtotal</td>
