@@ -34,10 +34,12 @@
                             </li>
                             <li class="nav-item">
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                <a class="nav-link" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();"><i class="ti-lock"></i>Logout</a>
+                                    @csrf
+                                </form>
+                                <a class="nav-link"
+                                    onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"><i
+                                        class="ti-lock"></i>Logout</a>
                             </li>
                         </ul>
                     </div>

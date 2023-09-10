@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Traits\CreateTrait;
 use App\Http\Traits\DataTrait;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Condition;
@@ -25,6 +26,8 @@ class UserController extends Controller
         $data['user'] = Auth::user() ? Auth::user() : User::where('role_id',1)->first();
         $data['city'] = City::all();
         $data['province'] = Province::all();
+        $products = Cart::where('user_id', Auth::user()->id)
+        ->with('product')->get()->groupBy(['user_id', 'product_id']);
         return view('frontend.pages.user.index',$data);
     }
 

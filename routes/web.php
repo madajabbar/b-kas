@@ -10,6 +10,7 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -50,4 +51,14 @@ Route::prefix('admin')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout.index');
     Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+    Route::get('/cart/table',[CartController::class,'cart'])->name('cart.table');
+    Route::get('/cart/delete',[CartController::class,'delete'])->name('cart.delete');
 });
+Route::get('/test',function(){
+    $data['users'] = User::all();
+    return view('home',$data);
+});
+Route::get('/chat/user/{user}', [App\Http\Controllers\ChatController::class, 'chat'])->name('chat');
+Route::get('/chat/room/{room}', [App\Http\Controllers\ChatController::class, 'room'])->name('chat.room');
+Route::get('/chat/get/{room}', [App\Http\Controllers\ChatController::class, 'getChat'])->name('chat.get');
+Route::post('/chat/send', [App\Http\Controllers\ChatController::class, 'sendChat'])->name('chat.send');

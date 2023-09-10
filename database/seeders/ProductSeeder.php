@@ -21,7 +21,7 @@ class ProductSeeder extends Seeder
         $condition = Condition::all()->pluck('id');
         $user = User::where('role_id', Role::where('name','user')->first()->id)->pluck('id');
 
-        for($i=0; $i<1000;$i++){
+        for($i=0; $i<9000;$i++){
             Product::create(
                 [
                     'user_id'=> $user[rand(0,count($user)-1)],
