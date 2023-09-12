@@ -51,6 +51,8 @@ Route::prefix('admin')->group(function(){
 Route::middleware('auth')->group(function(){
     Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout.index');
     Route::get('/cart',[CartController::class,'index'])->name('cart.index');
+    Route::post('/cart',[CartController::class,'store'])->name('cart.store');
+    Route::post('/cart/update',[CartController::class,'update'])->name('cart.update');
     Route::post('/cart/checkout',[CartController::class,'checkout'])->name('cart.checkout');
     Route::get('/cart/table',[CartController::class,'cart'])->name('cart.table');
     Route::get('/cart/delete',[CartController::class,'delete'])->name('cart.delete');

@@ -16,14 +16,18 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         Role::create(
-                [
-                    'name' => 'admin'
-                ],
+            [
+                'name' => 'admin'
+            ],
         );
         Role::create(
-
             [
                 'name' => 'user'
+            ],
+        );
+        Role::create(
+            [
+                'name' => 'seller'
             ],
         );
         User::create(
@@ -31,7 +35,7 @@ class RoleSeeder extends Seeder
                 'name' => 'admin',
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('rahasia123'),
-                'role_id' => Role::where('name','admin')->first()->id,
+                'role_id' => Role::where('name', 'admin')->first()->id,
             ]
         );
     }

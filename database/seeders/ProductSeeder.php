@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
     {
         $category = Category::all()->pluck('id');
         $condition = Condition::all()->pluck('id');
-        $user = User::where('role_id', Role::where('name','user')->first()->id)->pluck('id');
+        $user = User::where('role_id', Role::where('name','seller')->first()->id)->pluck('id');
 
         for($i=0; $i<9000;$i++){
             Product::create(
