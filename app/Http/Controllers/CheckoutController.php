@@ -46,5 +46,8 @@ class CheckoutController extends Controller
     }
     public function checkout(Request $request){
         $order = Order::find($request->order_id);
+        $order->status = 'waiting';
+        $order->save();
+        return redirect()->back();
     }
 }

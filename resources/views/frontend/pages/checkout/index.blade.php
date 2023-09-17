@@ -91,10 +91,11 @@
                                     </tfoot>
                                 </table>
                             </div>
-                            <form action="" method="post">
+                            <form action="{{route('checkout.store')}}" method="post">
+                                @csrf
                                 <input type="hidden" name="order_id" value="{{$order[0]->id}}">
+                                <button type="submit" class="btn btn-fill-out btn-block">Place Order</button>
                             </form>
-                            <button type="submit" class="btn btn-fill-out btn-block">Place Order</button>
                         </div>
                     </div>
                 @endforeach

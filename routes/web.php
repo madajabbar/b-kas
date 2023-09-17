@@ -50,6 +50,7 @@ Route::prefix('admin')->group(function(){
 });
 Route::middleware('auth')->group(function(){
     Route::get('/checkout',[CheckoutController::class,'index'])->name('checkout.index');
+    Route::post('/checkout',[CheckoutController::class,'checkout'])->name('checkout.store');
     Route::get('/cart',[CartController::class,'index'])->name('cart.index');
     Route::post('/cart',[CartController::class,'store'])->name('cart.store');
     Route::post('/cart/update',[CartController::class,'update'])->name('cart.update');

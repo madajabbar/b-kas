@@ -22,8 +22,6 @@ return new class extends Migration
             $table->integer('amount');
             $table->enum('status',['checkout','waiting'])->default('waiting');
             $table->timestamps();
-
-
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
             $table->foreign('product_id')->references('id')->on('products')->onUpdate('CASCADE')->onDelete('CASCADE');
         });

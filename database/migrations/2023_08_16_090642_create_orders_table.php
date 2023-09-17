@@ -21,6 +21,8 @@ return new class extends Migration
             $table->integer('shipping_fee');
             $table->string('shipping_service');
             $table->string('shipping_code');
+            $table->enum('shipping_method',['POS','JNE'])->nullable();
+            $table->string('shipping_estimated')->nullable();
             $table->string('shipping_description');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();

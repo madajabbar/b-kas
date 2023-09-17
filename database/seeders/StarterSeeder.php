@@ -15,7 +15,7 @@ class StarterSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 1; $i <= 1000; $i++){
+        for($i = 1; $i <= 100; $i++){
             User::create(
                 [
                     'name' => fake()->name(),
@@ -25,7 +25,7 @@ class StarterSeeder extends Seeder
                 ]
             );
         }
-        for($i = 1; $i <= 100; $i++){
+        for($i = 1; $i <= 10; $i++){
             User::create(
                 [
                     'name' => fake()->name(),
