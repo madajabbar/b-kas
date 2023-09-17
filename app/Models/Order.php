@@ -14,7 +14,7 @@ class Order extends Model
         return $this->belongsTo(Cart::class);
     }
     public function orderDetail(){
-        return $this->hasMany(orderDetail::class);
+        return $this->hasMany(OrderDetail::class);
     }
     protected static function boot()
     {
