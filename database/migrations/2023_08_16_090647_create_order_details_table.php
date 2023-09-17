@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->string('shipping_fee');
-            $table->string('shipping_service');
-            $table->string('shipping_code');
-            $table->string('shipping_description');
+            $table->unsignedBigInteger('cart_id');
+            $table->unsignedBigInteger('order_id');
             $table->timestamps();
+            $table->foreign('cart_id')->references('id')->on('carts')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('order_id')->references('id')->on('orders')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

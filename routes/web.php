@@ -65,3 +65,4 @@ Route::get('/chat/user/{user}', [App\Http\Controllers\ChatController::class, 'ch
 Route::get('/chat/room/{room}', [App\Http\Controllers\ChatController::class, 'room'])->name('chat.room');
 Route::get('/chat/get/{room}', [App\Http\Controllers\ChatController::class, 'getChat'])->name('chat.get');
 Route::post('/chat/send', [App\Http\Controllers\ChatController::class, 'sendChat'])->name('chat.send');
+Route::get('rajaongkir',[CheckoutController::class,'rajaongkir'])->name('rajaongkir');

@@ -55,7 +55,7 @@
                                                 data-cart-id="{{ $cart->id }}">
                                                 <div class="quantity">
                                                     <input type="button" value="-" class="minus2">
-                                                    <input id="product-amount-{{$cart->id}}" type="text" name="amount" value="{{ $cart->amount }}"
+                                                    <input id="product-amount-{{$cart->id}}" type="text" value="{{ $cart->amount }}"
                                                         title="Qty" class="qty" size="4">
                                                     <input type="button" value="+" class="plus2">
                                                 </div>
@@ -83,7 +83,7 @@
                     <div class="medium_divider"></div>
                 </div>
             </div>
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-md-6">
                     <div class="heading_s1 mb-3">
                         <h6>Calculate Shipping</h6>
@@ -143,7 +143,7 @@
                         <a href="#" class="btn btn-fill-out">Proceed To CheckOut</a>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 @endsection
@@ -155,7 +155,10 @@
             const plus2Button = quantityElement.querySelector('.plus2');
             var qtyInput = quantityElement.querySelector('.qty');
             const cartId = quantityElement.getAttribute('data-cart-id');
-
+            qtyInput.addEventListener('change', ()=>{
+                console.log(event);
+                updateCart(cartId,event.target.value)
+            })
             minus2Button.addEventListener('click', () => {
                 // Decrease the quantity by 1, but ensure it doesn't go below 1
                 var currentQty = parseInt(qtyInput.value);

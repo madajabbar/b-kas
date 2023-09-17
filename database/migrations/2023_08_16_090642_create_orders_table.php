@@ -14,12 +14,17 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->ulid('ulid');
+            $table->string('order_id');
             $table->integer('total_payment');
             $table->string('payment_type');
-            $table->enum('status',['success','pending','failed'])->default('pending');
-            $table->unsignedBigInteger('cart_id');
+            $table->enum('status',['success','pending','failed','waiting'])->default('pending');
+            $table->integer('shipping_fee');
+            $table->string('shipping_service');
+            $table->string('shipping_code');
+            $table->string('shipping_description');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            $table->foreign('cart_id')->references('id')->on('carts')->onUpdate('CASCADE')->onDelete('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

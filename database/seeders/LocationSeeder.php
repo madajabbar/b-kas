@@ -21,37 +21,27 @@ class LocationSeeder extends Seeder
 
         foreach ($provinces as $province) {
             $prvnc = Province::create([
+                'id' => $province['province_id'],
                 'name'        => $province['province'],
                 'created_at'  => now(),
                 'updated_at'  => now(),
             ]);
-            $cities = Http::withOptions(['verify' => false,])->withHeaders([
-                'key' => env('RAJAONGKIR_API_KEY')
-            ])->get('https://api.rajaongkir.com/starter/city?province=' . $prvnc->id)->json()['rajaongkir']['results'];
+        }
+        $cities = Http::withOptions(['verify' => false,])->withHeaders([
+            'key' => env('RAJAONGKIR_API_KEY')
+        ])->get('https://api.rajaongkir.com/starter/city?province=')->json()['rajaongkir']['results'];
 
-            $insert_city = [];
+        foreach ($cities as $city) {
+            City::create([
+                'id' => $city['city_id'],
+                'province_id'   => $city['province_id'],
+                'type'          => $city['type'],
+                'name'          => $city['type'] . ' ' . $city['city_name'],
+                'postal_code'   => $city['postal_code'],
+                'created_at'    => now(),
+                'updated_at'    => now(),
+            ]);
 
-            foreach ($cities as $city) {
-
-                $data = [
-                    'province_id'   => $prvnc->id,
-                    'type'          => $city['type'],
-                    'name'          => $city['type'] . ' ' . $city['city_name'],
-                    'postal_code'   => $city['postal_code'],
-                    'created_at'    => now(),
-                    'updated_at'    => now(),
-                ];
-
-                $insert_city[] = $data;
-            }
-
-            $insert_city = collect($insert_city);
-
-            $city_chunks = $insert_city->chunk(100);
-
-            foreach ($city_chunks as $chunk) {
-                City::insert($chunk->toArray());
-            }
         }
     }
 }

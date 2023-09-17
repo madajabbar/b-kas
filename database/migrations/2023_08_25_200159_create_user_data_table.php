@@ -19,8 +19,8 @@ return new class extends Migration
             $table->text('address');
             $table->integer('postal_code');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('province_id');
-            $table->unsignedBigInteger('city_id');
+            $table->integer('province_id');
+            $table->integer('city_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
