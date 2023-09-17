@@ -11,10 +11,10 @@ class Order extends Model
     use HasFactory;
     protected $guarded = [];
     public function cart(){
-        return $this-> belongsTo(Cart::class);
+        return $this->belongsTo(Cart::class);
     }
     public function orderDetail(){
-        return $this-> hasMany(orderDetail::class);
+        return $this->hasMany(orderDetail::class);
     }
     protected static function boot()
     {
