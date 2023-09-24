@@ -5,15 +5,26 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta content="Anil z" name="author">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description"
-        content="Shopwise is Powerful features and You Can Use The Perfect Build this Template For Any eCommerce Website. The template is built for sell Fashion Products, Shoes, Bags, Cosmetics, Clothes, Sunglasses, Furniture, Kids Products, Electronics, Stationery Products and Sporting Goods.">
-    <meta name="keywords"
-        content="ecommerce, electronics store, Fashion store, furniture store,  bootstrap 4, clean, minimal, modern, online store, responsive, retail, shopping, ecommerce store">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beli dan jual barang bekas berkualitas di BKASID.com. Temukan berbagai pilihan barang bekas terbaik untuk kebutuhan Anda.">
+    <meta name="keywords" content="belanja barang bekas, jual barang bekas, barang bekas berkualitas, situs jual beli barang bekas">
+    <meta name="author" content="BKASID">
+    <meta name="robots" content="index, follow">
+    <meta name="og:title" content="BKASID - Belanja Barang Bekas Berkualitas">
+    <meta name="og:description" content="Beli dan jual barang bekas berkualitas di BKASID.com. Temukan berbagai pilihan barang bekas terbaik untuk kebutuhan Anda.">
+    <meta name="og:image" content="{{ asset('frontend/Logo.png') }}">
+    <meta name="og:url" content="https://www.bkasid.com/">
+    <meta name="og:type" content="website">
+    <meta name="og:locale" content="id_ID">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@bkasid">
+    <meta name="twitter:title" content="BKASID - Belanja Barang Bekas Berkualitas">
+    <meta name="twitter:description" content="Beli dan jual barang bekas berkualitas di BKASID.com. Temukan berbagai pilihan barang bekas terbaik untuk kebutuhan Anda.">
+    <meta name="twitter:image" content="{{ asset('frontend/Logo.png') }}">
+    <meta name="twitter:url" content="https://www.bkasid.com/">
+    <link rel="canonical" href="https://www.bkasid.com/">
     <!-- SITE TITLE -->
-    <title>Shopwise - eCommerce Bootstrap 5 HTML Template</title>
+    <title>BKAS</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/images/favicon.png') }}">
     <!-- Animation CSS -->

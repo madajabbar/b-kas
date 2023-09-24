@@ -20,7 +20,9 @@ class ConditionController extends Controller
             ->addColumn('action', function ($row) {
                 $form = '<form action="' . route('product.index') . '" method="get">';
                 $form .= '<input type="hidden" name="condition" value="'.$row->id.'" />';
-                $form .= '<button type="submit" class="btn btn-warning btn-sm">View</button>';
+                $form .= '<button type="submit" class="btn btn-warning btn-sm mx-auto">View</button>';
+                $form .= '<a  href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-success btn-sm mx-auto edit">Edit</a>';
+                $form .= '<a  href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-danger btn-sm mx-auto delete">Delete</a>';
                 $form .= '</form>';
                 return $form;
             })
@@ -29,5 +31,31 @@ class ConditionController extends Controller
             })
             ->rawColumns(['action'])
             ->make(true);
+    }
+    public function store(Request $request){
+        $request->validate(
+            [
+                'name' => 'required'
+            ]
+        );
+
+        $data = Condition::updateOrCreate(
+            [
+                'id' => $request->id,
+            ],
+            [
+                'name' => $request->name,
+            ]
+        );
+
+        return $data;
+    }
+    public function edit($id){
+        $data = Condition::find($id);
+        return $data;
+    }
+    public function destroy($id){
+        $data = Condition::find($id)->delete();
+        return $data;
     }
 }

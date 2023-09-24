@@ -140,10 +140,13 @@
                     </a>
                 </li>
                 <li class="sidebar-item  ">
-                    <a href="https://github.com/zuramai/mazer#donation" class='sidebar-link'>
-                        <i class="bi bi-door-closed-fill"></i>
-                        <span>Log Out</span>
-                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                    <a class="sidebar-link"
+                        onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        <i class="bi bi-door-closed-fill"></i>Logout</a>
                 </li>
 
             </ul>

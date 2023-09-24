@@ -16,6 +16,9 @@ class Order extends Model
     public function orderDetail(){
         return $this->hasMany(OrderDetail::class);
     }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
     protected static function boot()
     {
         parent::boot();

@@ -3,7 +3,7 @@
         <div class="card-header">
             <h3>Halo {{ $user->name }}</h3>
             <p>Your Product</p>
-            <button class="btn btn-fill-out btn-radius">Add Product</button>
+            <a href="{{route('user.product.create')}}" class="btn btn-fill-out btn-radius">Add Product</a>
         </div>
         <div class="card-body">
             <div class="row">

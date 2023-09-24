@@ -19,7 +19,7 @@ class UserController extends Controller
     }
     public function datatable(Request $request)
     {
-        $user = User::query()->where('role_id', Role::where('name', 'user')->first()->id);
+        $user = User::query()->whereIn('role_id', Role::where('name','!=', 'admin')->pluck('id'));
         return DataTables::of($user)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {

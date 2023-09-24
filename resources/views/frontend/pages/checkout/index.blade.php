@@ -24,7 +24,7 @@
                             </address>
                             <p>{{ Auth::user()->userData->city->name }}</p>
                             <p>{{ Auth::user()->userData->province->name }}</p>
-                            <a href="#" class="btn btn-fill-out">Edit</a>
+                            <a href="{{route('user')}}" class="btn btn-fill-out">Edit</a>
                         </div>
                     </div>
                 </div>

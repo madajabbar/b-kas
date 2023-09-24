@@ -18,13 +18,46 @@ class CategoryController extends Controller
         return DataTables::of($user)
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
-                $btn = '<a href="javascript:void(0)" class="edit btn btn-warning btn-sm">View</a>';
-                return $btn;
+                $form = '<form action="' . route('product.index') . '" method="get">';
+                $form .= '<input type="hidden" name="category" value="'.$row->id.'" />';
+                $form .= '<button type="submit" class="btn btn-warning btn-sm mx-auto">View</button>';
+                $form .= '<a  href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-success btn-sm mx-auto edit">Edit</a>';
+                $form .= '<a  href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-danger btn-sm mx-auto delete">Delete</a>';
+                $form .= '</form>';
+                return $form;
             })
             ->addColumn('product', function ($row) {
                 return count($row->product);
             })
             ->rawColumns(['action'])
             ->make(true);
+    }
+    public function store(Request $request){
+        $request->validate(
+            [
+                'name' => 'required',
+                'description' => 'required',
+            ]
+        );
+
+        $data = Category::updateOrCreate(
+            [
+                'id' => $request->id,
+            ],
+            [
+                'name' => $request->name,
+                'description' => $request->description,
+            ]
+        );
+
+        return $data;
+    }
+    public function edit($id){
+        $data = Category::find($id);
+        return $data;
+    }
+    public function destroy($id){
+        $data = Category::find($id)->delete();
+        return $data;
     }
 }

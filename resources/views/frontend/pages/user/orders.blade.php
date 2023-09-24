@@ -17,34 +17,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>#1234</td>
-                            <td>
-                                March 15, 2020
-                            </td>
-                            <td>Processing</td>
-                            <td>
-                                $78.00 for 1
-                                item
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-fill-out btn-sm">View</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>#2366</td>
-                            <td>
-                                June 20, 2020
-                            </td>
-                            <td>Completed</td>
-                            <td>
-                                $81.00 for 1
-                                item
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-fill-out btn-sm">View</a>
-                            </td>
-                        </tr>
+                        @foreach ($orders as $order)
+                            <tr>
+                                <td>{{$order->order_id}}</td>
+                                <td>
+                                    {{\Carbon\Carbon::parse($order->created_at)->format('d F Y')}}
+                                </td>
+                                <td>{{$order->status}}</td>
+                                <td>
+                                    Rp. {{$order->total_payment}} for {{count($order->orderDetail)}}
+                                    item
+                                </td>
+                                <td>
+                                    <a href="#" class="btn btn-fill-out btn-sm">View</a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

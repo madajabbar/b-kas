@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->integer('province_id');
             $table->integer('city_id');
+            $table->text('profile_image')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');

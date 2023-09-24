@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('order_id');
             $table->integer('total_payment');
             $table->string('payment_type');
+            $table->string('payment_link')->nullable();
             $table->enum('status',['success','pending','failed','waiting'])->default('pending');
             $table->integer('shipping_fee');
             $table->string('shipping_service');

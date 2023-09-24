@@ -33,9 +33,13 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/quickview/{product}', [HomeController::class, 'quickView'])->name('quickview');
 Route::get('/user',[UserController::class,'index'])->name('user');
+Route::post('/user/update',[UserController::class,'update'])->name('update.user');
 Route::get('/product', [HomeController::class, 'product'])->name('product');
 Route::get('/product/detail', [HomeController::class, 'productDetail'])->name('productDetail');
 Route::get('/user/product', [UserController::class, 'showProduct'])->name('user.product');
+Route::get('/user/product/create', [UserController::class, 'addProduct'])->name('user.product.create');
+Route::post('/user/product/image', [UserController::class, 'storeImage'])->name('user.product.image');
+Route::get('/user/product/image/{ulid}', [UserController::class, 'deleteImage'])->name('user.product.image.delete');
 Route::post('/user/product', [UserController::class, 'storeProduct'])->name('user.product');
 Route::prefix('admin')->group(function(){
     Route::resource('dashboard', DashboardController::class);
@@ -67,3 +71,4 @@ Route::get('/chat/room/{room}', [App\Http\Controllers\ChatController::class, 'ro
 Route::get('/chat/get/{room}', [App\Http\Controllers\ChatController::class, 'getChat'])->name('chat.get');
 Route::post('/chat/send', [App\Http\Controllers\ChatController::class, 'sendChat'])->name('chat.send');
 Route::get('rajaongkir',[CheckoutController::class,'rajaongkir'])->name('rajaongkir');
+Route::post('ipaymu/callback', [CheckoutController::class, 'ipaymu'])->name('callback');

@@ -38,7 +38,7 @@
                                 @enderror
                             </div>
                             <div class="form-group mb-3">
-                                <input class="form-control" required="" type="password" name="password" placeholder="Confirm Password">
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                             <div class="login_footer form-group mb-3">
                                 <div class="chek-form">

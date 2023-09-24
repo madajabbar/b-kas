@@ -21,7 +21,10 @@
     </div>
     <div class="product_info">
         <h6 class="product_title">
-            <a href="{{ route('productDetail') }}">{{ $data->name }}</a>
+            <form action="{{route('productDetail')}}" method="get">
+                <input type="hidden" name="product" value="{{$data->ulid}}">
+            <button class="btn btn-link" type="submit" >{{ $data->name }}</button>
+            </form>
         </h6>
         <div class="product_price">
             <span class="price">Rp. {{ $data->price }}</span>

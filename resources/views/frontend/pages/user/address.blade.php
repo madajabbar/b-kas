@@ -8,10 +8,11 @@
                 </div>
                 <div class="card-body">
                     <address>
-                        {{$user->userData->address}}
+                        {{$user->userData->address ?? ''}}
                     </address>
-                    <p>{{$user->userData->city->name}}</p>
-                    <a href="#" class="btn btn-fill-out">Edit</a>
+                    <p>{{$user->userData->city->name ?? ''}}</p>
+                    <p>{{$user->userData->province->name ?? ''}}</p>
+
                 </div>
             </div>
         </div>

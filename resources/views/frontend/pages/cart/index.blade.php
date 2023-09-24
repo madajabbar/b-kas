@@ -83,67 +83,6 @@
                     <div class="medium_divider"></div>
                 </div>
             </div>
-            {{-- <div class="row">
-                <div class="col-md-6">
-                    <div class="heading_s1 mb-3">
-                        <h6>Calculate Shipping</h6>
-                    </div>
-                    <form class="field_form shipping_calculator">
-                        <div class="form-row">
-                            <div class="form-group col-lg-12 mb-3">
-                                <div class="custom_select">
-                                    <select class="form-control">
-                                        <option disabled value="{{ Auth::user()->userData->city->id }}" selected>
-                                            {{ Auth::user()->userData->city->name }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-lg-6 mb-3">
-                                <input required="required" placeholder="State / Country" class="form-control" name="name"
-                                    type="text" value="{{ Auth::user()->userData->province->name }}" disabled>
-                            </div>
-                            <div class="form-group col-lg-6 mb-3">
-                                <input required="required" placeholder="PostCode / ZIP" class="form-control" name="name"
-                                    type="text" value="{{ Auth::user()->userData->postal_code }}" disabled>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-lg-12 mb-3">
-                                <button class="btn btn-fill-line" type="submit">Update Totals</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-md-6">
-                    <div class="border p-3 p-md-4">
-                        <div class="heading_s1 mb-3">
-                            <h6>Cart Totals</h6>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <tbody>
-                                    <tr>
-                                        <td class="cart_total_label">Shipping</td>
-                                        <td class="cart_total_amount">Rp.
-                                            {{ $ongkir['rajaongkir']['results'][0]['costs'][0]['cost'][0]['value'] }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="cart_total_label">Cart Subtotal</td>
-                                        <td class="cart_total_amount">Rp. {{ $total->sum('total_payment') }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="cart_total_label">Total</td>
-                                        <td class="cart_total_amount"><strong>$349.00</strong></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <a href="#" class="btn btn-fill-out">Proceed To CheckOut</a>
-                    </div>
-                </div>
-            </div> --}}
         </div>
     </div>
 @endsection
