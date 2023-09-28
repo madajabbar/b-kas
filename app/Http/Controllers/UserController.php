@@ -6,6 +6,7 @@ use App\Http\Traits\CreateTrait;
 use App\Http\Traits\DataTrait;
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\ChatRoomUser;
 use App\Models\City;
 use App\Models\Condition;
 use App\Models\Order;
@@ -36,6 +37,8 @@ class UserController extends Controller
         $products = Cart::where('user_id', Auth::user()->id)
         ->with('product')->get()->groupBy(['user_id', 'product_id']);
         $data['orders'] = Order::orderBy('id','desc')->where('user_id', Auth::user()->id)->get();
+        $chatroom = ChatRoomUser::where('user_id', Auth::user()->id)->pluck('chat_room_id');
+        $data['chat_rooms'] = ChatRoomUser::whereIn('chat_room_id', $chatroom)->where('user_id','!=',Auth::user()->id)->get();
         return view('frontend.pages.user.index',$data);
     }
 
@@ -117,7 +120,7 @@ class UserController extends Controller
         );
         $image = Image::make($request->image)->encode('webp', 100);
         $data = Product::find($request->id);
-        $path = 'product/' . Str::slug($data->name) . '_' . count($data->productImage) + 1. . '.webp';
+        $path = 'product/'.Str::slug($data->user->ulid).'/' . Str::slug($data->name) . '_' . count($data->productImage) + 1. . '.webp';
         Storage::put('public/' . $path, $image);
         $data = ProductImage::create(
             [

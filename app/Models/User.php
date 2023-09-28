@@ -56,8 +56,14 @@ class User extends Authenticatable
     public function cart(){
         return $this->hasMany(Cart::class);
     }
+    public function chatRoomUser(){
+        return $this->hasMany(Cart::class);
+    }
     public function userData(){
         return $this->hasOne(UserData::class);
+    }
+    public function review(){
+        return $this->hasMany(Review::class);
     }
     protected static function boot()
     {

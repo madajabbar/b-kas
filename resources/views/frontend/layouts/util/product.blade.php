@@ -24,25 +24,19 @@
     </div>
     <div class="product_info">
         <h6 class="product_title">
-            <a href="{{ route('productDetail') }}">{{ $data->name }}</a>
+            <form action="{{ route('productDetail') }}" method="get">
+                <input type="hidden" name="product" value="{{$data->ulid}}">
+                <button class="btn border-none bg-none" type="submit">{{ $data->name }}</button>
+            </form>
         </h6>
         <div class="product_price">
             <span class="price">Rp. {{ $data->price }}</span>
-            <del>Rp. </del>
-            <div class="on_sale">
-                <span>35% Off</span>
-            </div>
         </div>
         <div class="rating_wrap">
             <div class="rating">
                 <div class="product_rate" style="width: 80%"></div>
             </div>
             <span class="rating_num">{{ $data->quantity }}</span>
-        </div>
-        <div class="pr_desc">
-            <p>
-                {{ $data->description }}
-            </p>
         </div>
     </div>
 </div>

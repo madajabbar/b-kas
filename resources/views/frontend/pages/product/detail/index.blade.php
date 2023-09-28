@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 @section('css')
-<meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 @endsection
 
 @section('content')
@@ -12,47 +12,31 @@
                     <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                         <div class="product-image">
                             <div class="product_img_box">
-                                <img id="product_img" src="{{ asset('frontend/assets/images/product_img1.jpg') }}"
-                                    data-zoom-image="{{ asset('frontend/assets/images/product_zoom_img1.jpg') }}"
-                                    alt="product_img1" />
-                                <a href="#" class="product_img_zoom" title="Zoom">
-                                    <span class="linearicons-zoom-in"></span>
-                                </a>
+                                @if (count($product->productImage) > 0)
+                                    <img id="product_img" src="{{ asset('storage/'.$product->productImage[0]->link) }}"
+                                        data-zoom-image="{{ asset('storage/'.$product->productImage[0]->link) }}"
+                                        alt="product_img1" />
+                                @else
+                                    <img id="product_img" src="{{ asset('frontend/assets/images/product_img1.jpg') }}"
+                                        data-zoom-image="{{ asset('frontend/assets/images/product_zoom_img1.jpg') }}"
+                                        alt="product_img1" />
+                                    <a href="#" class="product_img_zoom" title="Zoom">
+                                        <span class="linearicons-zoom-in"></span>
+                                    </a>
+                                @endif
                             </div>
                             <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4"
                                 data-slides-to-scroll="1" data-infinite="false">
-                                <div class="item">
-                                    <a href="#" class="product_gallery_item active"
-                                        data-image="{{ asset('frontend/assets/images/product_img1.jpg') }}"
-                                        data-zoom-image="{{ asset('frontend/assets/images/product_zoom_img1.jpg') }}">
-                                        <img src="{{ asset('frontend/assets/images/product_small_img1.jpg') }}"
-                                            alt="product_small_img1" />
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="product_gallery_item"
-                                        data-image="{{ asset('frontend/assets/images/product_img1-2.jpg') }}"
-                                        data-zoom-image="{{ asset('frontend/assets/images/product_zoom_img2.jpg') }}">
-                                        <img src="{{ asset('frontend/assets/images/product_small_img2.jpg') }}"
-                                            alt="product_small_img2" />
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="product_gallery_item"
-                                        data-image="{{ asset('frontend/assets/images/product_img1-3.jpg') }}"
-                                        data-zoom-image="{{ asset('frontend/assets/images/product_zoom_img3.jpg') }}">
-                                        <img src="{{ asset('frontend/assets/images/product_small_img3.jpg') }}"
-                                            alt="product_small_img3" />
-                                    </a>
-                                </div>
-                                <div class="item">
-                                    <a href="#" class="product_gallery_item"
-                                        data-image="{{ asset('frontend/assets/images/product_img1-4.jpg') }}"
-                                        data-zoom-image="{{ asset('frontend/assets/images/product_zoom_img4.jpg') }}">
-                                        <img src="{{ asset('frontend/assets/images/product_small_img4.jpg') }}"
-                                            alt="product_small_img4" />
-                                    </a>
-                                </div>
+                                @foreach ($product->productImage as $image)
+                                    <div class="item">
+                                        <a href="#" class="product_gallery_item active"
+                                            data-image="{{ asset('storage/'.$image->link) }}"
+                                            data-zoom-image="{{ asset('storage/'.$image->link) }}">
+                                            <img src="{{ asset('storage/'.$image->link) }}"
+                                                alt="product_small_img1" />
+                                        </a>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -64,10 +48,12 @@
                                 </h4>
                                 <div class="product_price">
                                     <span class="price">Rp. {{ $product->price }}</span>
-                                    <del>$55.25</del>
+                                    @if($product->discount != null)
+                                    <del>Rp. {{$product->price+$product->discount}}</del>
                                     <div class="on_sale">
-                                        <span>35% Off</span>
+                                        <span>Discount Off</span>
                                     </div>
+                                    @endif
                                 </div>
                                 <div class="rating_wrap">
                                     <div class="rating">
@@ -80,22 +66,16 @@
                                         {{ $product->description }}
                                     </p>
                                 </div>
-                                {{-- <div class="product_sort_info">
+                                <div class="product_sort_info">
                                     <ul>
-                                        <li>
-                                            <i class="linearicons-shield-check"></i>
-                                            1 Year AL Jazeera Brand Warranty
-                                        </li>
-                                        <li>
-                                            <i class="linearicons-sync"></i>
-                                            30 Day Return Policy
-                                        </li>
-                                        <li>
-                                            <i class="linearicons-bag-dollar"></i>
-                                            Cash on Delivery available
-                                        </li>
+                                        <a href="{{route('seller',$product->user->ulid)}}">
+                                            <li>
+                                                <i class="linearicons-store"></i>
+                                                Toko {{$product->user->name}}
+                                            </li>
+                                        </a>
                                     </ul>
-                                </div> --}}
+                                </div>
                             </div>
                             <hr />
                             <form action="{{ route('cart.store') }}" method="post">
@@ -104,21 +84,34 @@
                                     <div class="cart-product-quantity">
                                         <div class="quantity">
                                             <input type="button" value="-" class="minus" />
-                                            <input type="text" name="amount" value="1" title="Qty" id="amount"
-                                                class="qty" size="4" />
+                                            <input type="text" name="amount" value="1" title="Qty"
+                                                id="amount" class="qty" size="4" />
                                             <input type="button" value="+" class="plus" />
                                         </div>
                                     </div>
                                     <div class="cart_btn">
-                                        <input type="hidden" name="product_id" value="{{ $product->id }}" id="product_id">
+                                        <input type="hidden" name="product_id" value="{{ $product->id }}"
+                                            id="product_id">
                                         <button class="btn btn-fill-out btn-addtocart" type="button">
                                             <i class="icon-basket-loaded"></i>
                                             Add to cart
                                         </button>
-                                        <a class="add_wishlist" href="#"><i class="icon-heart"></i></a>
-                                    </div>
+
+                                    </form>
                                 </div>
-                            </form>
+                                <div class="mx-auto">
+                                    <form action="{{route('product.like')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                                        @if ($product->review[0]->islike != null)
+                                        <button class="add_wishlist" href="#"><i class="{{$product->review[0]->islike == true ? 'icon-heart':'icon-star'}}"></i></button>
+                                        @else
+                                        <button class="add_wishlist" href="#"><i class="icon-star"></i></button>
+                                        @endif
+                                    </form>
+
+                                </div>
+                                </div>
                             <hr />
                             <ul class="product-meta">
                                 {{-- <li>SKU: <a href="#">BE45VGRT</a></li> --}}
@@ -167,162 +160,54 @@
                                         aria-selected="true">Description</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab"
-                                        href="#Additional-info" role="tab" aria-controls="Additional-info"
-                                        aria-selected="false">Additional info</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews"
-                                        role="tab" aria-controls="Reviews" aria-selected="false">Reviews (2)</a>
+                                        role="tab" aria-controls="Reviews" aria-selected="false">Reviews {{count($product->review)}}</a>
                                 </li>
                             </ul>
                             <div class="tab-content shop_info_tab">
                                 <div class="tab-pane fade show active" id="Description" role="tabpanel"
                                     aria-labelledby="Description-tab">
                                     <p>
-                                        Contrary to popular belief, Lorem
-                                        Ipsum is not simply random text. It
-                                        has roots in a piece of classical
-                                        Latin literature from 45 BC, making
-                                        it over 2000 years old. Vivamus
-                                        bibendum magna Lorem ipsum dolor sit
-                                        amet, consectetur adipiscing
-                                        elit.Contrary to popular belief,
-                                        Lorem Ipsum is not simply random
-                                        text. It has roots in a piece of
-                                        classical Latin literature from 45
-                                        BC, making it over 2000 years old.
+                                        {{$product->description}}
                                     </p>
-                                    <p>
-                                        At vero eos et accusamus et iusto
-                                        odio dignissimos ducimus qui
-                                        blanditiis praesentium voluptatum
-                                        deleniti atque corrupti quos dolores
-                                        et quas molestias excepturi sint
-                                        occaecati cupiditate non provident,
-                                        similique sunt in culpa qui officia
-                                        deserunt mollitia animi, id est
-                                        laborum et dolorum fuga. Et harum
-                                        quidem rerum facilis est et expedita
-                                        distinctio.
-                                    </p>
-                                </div>
-                                <div class="tab-pane fade" id="Additional-info" role="tabpanel"
-                                    aria-labelledby="Additional-info-tab">
-                                    <table class="table table-bordered">
-                                        <tr>
-                                            <td>Capacity</td>
-                                            <td>5 Kg</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Color</td>
-                                            <td>Black, Brown, Red,</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Water Resistant</td>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Material</td>
-                                            <td>Artificial Leather</td>
-                                        </tr>
-                                    </table>
                                 </div>
                                 <div class="tab-pane fade" id="Reviews" role="tabpanel" aria-labelledby="Reviews-tab">
                                     <div class="comments">
                                         <h5 class="product_tab_title">
-                                            2 Review For
-                                            <span>Blue Dress For Woman</span>
+                                            {{count($product->review)}} Review For
+                                            <span>{{$product->name}}</span>
                                         </h5>
                                         <ul class="list_none comment_list mt-4">
-                                            <li>
-                                                <div class="comment_img">
-                                                    <img src="assets/images/user1.jpg" alt="user1" />
-                                                </div>
-                                                <div class="comment_block">
-                                                    <div class="rating_wrap">
-                                                        <div class="rating">
-                                                            <div class="product_rate"
-                                                                style="
-                                                                width: 80%;
-                                                            ">
+                                            @foreach ($product->review as $review)
+                                                <li>
+                                                    <div class="comment_block">
+                                                        <div class="rating_wrap">
+                                                            <div class="rating">
+                                                                <div class="product_rate"
+                                                                    style="
+                                                                    width: {{$review->rating}}%;
+                                                                ">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <p class="customer_meta">
-                                                        <span class="review_author">Alea
-                                                            Brooks</span>
-                                                        <span class="comment-date">March 5,
-                                                            2018</span>
-                                                    </p>
-                                                    <div class="description">
-                                                        <p>
-                                                            Lorem Ipsumin
-                                                            gravida nibh vel
-                                                            velit auctor
-                                                            aliquet. Aenean
-                                                            sollicitudin,
-                                                            lorem quis
-                                                            bibendum auctor,
-                                                            nisi elit
-                                                            consequat ipsum,
-                                                            nec sagittis sem
-                                                            nibh id elit.
-                                                            Duis sed odio
-                                                            sit amet nibh
-                                                            vulputate
+                                                        <p class="customer_meta">
+                                                            <span class="review_author">{{$review->user->name}}</span>
+                                                            <span class="comment-date">{{\Carbon\Carbon::parse($review->created_at)->format('F, d Y')}}</span>
                                                         </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="comment_img">
-                                                    <img src="assets/images/user2.jpg" alt="user2" />
-                                                </div>
-                                                <div class="comment_block">
-                                                    <div class="rating_wrap">
-                                                        <div class="rating">
-                                                            <div class="product_rate"
-                                                                style="
-                                                                width: 60%;
-                                                            ">
-                                                            </div>
+                                                        <div class="description">
+                                                            <p>
+                                                                {{$review->reviews}}
+                                                            </p>
                                                         </div>
                                                     </div>
-                                                    <p class="customer_meta">
-                                                        <span class="review_author">Grace
-                                                            Wong</span>
-                                                        <span class="comment-date">June 17,
-                                                            2018</span>
-                                                    </p>
-                                                    <div class="description">
-                                                        <p>
-                                                            It is a long
-                                                            established fact
-                                                            that a reader
-                                                            will be
-                                                            distracted by
-                                                            the readable
-                                                            content of a
-                                                            page when
-                                                            looking at its
-                                                            layout. The
-                                                            point of using
-                                                            Lorem Ipsum is
-                                                            that it has a
-                                                            more-or-less
-                                                            normal
-                                                            distribution of
-                                                            letters
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            @endforeach
                                         </ul>
                                     </div>
                                     <div class="review_form field_form">
                                         <h5>Add a review</h5>
-                                        <form class="row mt-3">
+                                        <form class="row mt-3" action="{{route('product.comment')}}" method="POST">
+                                            @csrf
                                             <div class="form-group col-12 mb-3">
                                                 <div class="star_rating">
                                                     <span data-value="1"><i class="far fa-star"></i></span>
@@ -333,17 +218,9 @@
                                                 </div>
                                             </div>
                                             <div class="form-group col-12 mb-3">
-                                                <textarea required="required" placeholder="Your review *" class="form-control" name="message" rows="4"></textarea>
+                                                <textarea required="required" placeholder="Your review *" class="form-control" name="review" rows="4"></textarea>
                                             </div>
-                                            <div class="form-group col-md-6 mb-3">
-                                                <input required="required" placeholder="Enter Name *"
-                                                    class="form-control" name="name" type="text" />
-                                            </div>
-                                            <div class="form-group col-md-6 mb-3">
-                                                <input required="required" placeholder="Enter Email *"
-                                                    class="form-control" name="email" type="email" />
-                                            </div>
-
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
                                             <div class="form-group col-12 mb-3">
                                                 <button type="submit" class="btn btn-fill-out" name="submit"
                                                     value="Submit">
@@ -367,11 +244,10 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="heading_s1">
-                            <h3>Releted Products</h3>
+                            <h3>Related Products</h3>
                         </div>
                         <div class="releted_product_slider carousel_slider owl-carousel owl-theme" data-margin="20"
                             data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                            {{ $i = 0 }}
                             @foreach ($product->category->product->random(8) as $data)
                                 @include('frontend.pages.product.detail.related_products')
                             @endforeach

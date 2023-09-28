@@ -23,6 +23,9 @@ class Product extends Model
     public function productImage(){
         return $this->hasMany(ProductImage::class);
     }
+    public function review(){
+        return $this->hasMany(Review::class);
+    }
 
 
     public function scopeUlid($query, $type){

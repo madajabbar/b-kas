@@ -26,7 +26,6 @@
                                 </ul>
                             </div>
                         </li>
-                        <li><a class="nav-link nav_item" href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
                 <ul class="navbar-nav attr-nav align-items-center">
@@ -34,8 +33,8 @@
                                 class="linearicons-magnifier"></i></a>
                         <div class="search_wrap">
                             <span class="close-search"><i class="ion-ios-close-empty"></i></span>
-                            <form>
-                                <input type="text" placeholder="Search" class="form-control" id="search_input">
+                            <form action="{{route('product')}}" method="GET">
+                                <input type="text" placeholder="Search" class="form-control" id="search_input" name="product">
                                 <button type="submit" class="search_icon"><i
                                         class="ion-ios-search-strong"></i></button>
                             </form>
@@ -52,8 +51,6 @@
                                     <h5 class="mx-3">Keranjang kamu terisi nih</h5>
                                 @endif
                                 <div class="cart_footer">
-                                    <p class="cart_total"><strong>Subtotal:</strong> <span class="cart_price"> <span
-                                                class="price_symbole">$</span></span>159.00</p>
                                     <p class="cart_buttons"><a href="{{route('cart.index')}}"
                                             class="btn btn-fill-line btn-radius view-cart">View Cart</a><a href="{{route('checkout.index')}}"
                                             class="btn btn-fill-out btn-radius checkout">Checkout</a>

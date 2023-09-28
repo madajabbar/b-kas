@@ -6,19 +6,6 @@
             </ul>
         </div>
         {{-- <div class="widget">
-            <h5 class="widget_title">Filter</h5>
-            <div class="filter_price">
-                <div id="price_filter" data-min="0" data-max="500000" data-min-value="50000"
-                    data-max-value="10000000" data-price-sign="Rp."></div>
-                <div class="price_range">
-                    <span>Price:
-                        <span id="flt_price"></span></span>
-                    <input type="hidden" id="price_first" />
-                    <input type="hidden" id="price_second" />
-                </div>
-            </div>
-        </div> --}}
-        <div class="widget">
             <h5 class="widget_title">Condition</h5>
             <ul class="list_brand">
                 @foreach ($condition as $data)
@@ -31,7 +18,7 @@
                     </li>
                 @endforeach
             </ul>
-        </div>
+        </div> --}}
         <div class="widget">
             <div class="shop_banner">
                 <div class="banner_img overlay_bg_20">

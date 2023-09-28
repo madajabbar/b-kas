@@ -8,9 +8,10 @@
 @endsection
 @section('content')
     <div class="page-heading">
+
         @include('backend.layouts.page-title')
 
-        @include('backend.product.form')
+        @include('backend.product.image-form')
         <!-- Basic Tables start -->
         <section class="section">
             <div class="card">
@@ -25,14 +26,7 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Description</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Discount</th>
-                                <th>Discount Status</th>
-                                <th>Category</th>
-                                <th>Condition</th>
-                                <th>User</th>
+                                <th>Link</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -56,12 +50,9 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: "{{ route('product.table') }}",
+                    url: "{{ route('product-image.index') }}",
                     data: function(data) {
-                        data.category = "{{ $category }}";
-                        data.condition = "{{ $condition }}";
-                        data.user = "{{ $user }}";
-
+                        data.product_id = "{{ $product_id }}";
                         return data;
                     }
                 },
@@ -70,36 +61,8 @@
                         name: 'name'
                     },
                     {
-                        data: 'description',
-                        name: 'description'
-                    },
-                    {
-                        data: 'quantity',
-                        name: 'quantity'
-                    },
-                    {
-                        data: 'price',
-                        name: 'price'
-                    },
-                    {
-                        data: 'discount',
-                        name: 'discount'
-                    },
-                    {
-                        data: 'discount_status',
-                        name: 'discount_status'
-                    },
-                    {
-                        data: 'category.name',
-                        name: 'category.name'
-                    },
-                    {
-                        data: 'condition.name',
-                        name: 'condition.name'
-                    },
-                    {
-                        data: 'user.name',
-                        name: 'user.name'
+                        data: 'link',
+                        name: 'link'
                     },
                     {
                         data: 'action',
@@ -116,29 +79,13 @@
         })
         $('body').on('click', '.edit', function() {
             var data_id = $(this).data('id');
-            $.get("{{ route('product.index') }}" + '/' + data_id + '/edit', function(data) {
+            $.get("{{ route('product-image.index') }}" + '/' + data_id + '/edit', function(data) {
                 $('#exampleModalCenterTitle').html("Edit");
                 $('#saveBtn').html("edit");
                 $('#exampleModalCenter').modal('show');
-                $('#id').val(data.id);
+                $('#product_id').val(data.id);
                 $('#name').val(data.name);
-                $('#description').val(data.description);
-                $('#price').val(data.price);
-                $('#quantity').val(data.quantity);
-                $('#discount').val(data.discount);
-                $('#discount_status').val(data.discount_status);
-                $("#user_id option").filter(function () {
-                    console.log(data.user_id);
-                    return $.trim($(this).val()) == data.user_id
-                }).prop('selected', true);
-                $("#condition_id option").filter(function () {
-                    console.log(data.condition_id);
-                    return $.trim($(this).val()) == data.condition_id
-                }).prop('selected', true);
-                $("#category_id option").filter(function () {
-                    console.log(data.category_id);
-                    return $.trim($(this).val()) == data.category_id
-                }).prop('selected', true);
+                $('#link').val(data.link);
             })
         });
         $('body').on('click', '.delete', function() {
@@ -161,7 +108,7 @@
                         },
                         contentType: false,
                         processData: false,
-                        url: "{{ route('product.destroy', '') }}" + "/" + data_id,
+                        url: "{{ route('product-image.destroy', '') }}" + "/" + data_id,
                         type: 'DELETE',
                         _token: $('meta[name="csrf-token"]').attr('content'),
                         success: function(data) {
@@ -200,13 +147,12 @@
                     cache: false,
                     contentType: false,
                     processData: false,
-                    url: "{{ route('product.store') }}",
+                    url: "{{ route('product-image.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
                         $('#exampleModalCenter').modal('hide');
                         $('#saveBtn').html('success');
-                        // $('#name').val('');
                         Swal.fire({
                             icon: 'success',
                             title: 'Data berhasil dimasukan',

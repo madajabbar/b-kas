@@ -30,9 +30,8 @@
                                         class="ti-shopping-cart-full"></i>Orders</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="address-tab" data-bs-toggle="tab" href="#address" role="tab"
-                                    aria-controls="address" aria-selected="true"><i class="ti-location-pin"></i>My
-                                    Address</a>
+                                <a class="nav-link" id="chat-tab" data-bs-toggle="tab" href="#chat" role="tab"
+                                    aria-controls="chat" aria-selected="true"><i class="ti-location-pin"></i>Chat</a>
                             </li>
                             <li class="nav-item">
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -52,7 +51,7 @@
                         @include('frontend.pages.user.dashboard')
                         @endif
                         @include('frontend.pages.user.account-detail')
-                        @include('frontend.pages.user.address')
+                        @include('frontend.pages.user.chat')
                         @include('frontend.pages.user.orders')
                     </div>
                 </div>

@@ -67,8 +67,8 @@ class CheckoutController extends Controller
         $ipaymu = new iPaymu($apiKey, $va, $production);
 
         $ipaymu->setURL([
-            'ureturn' => 'https://your-website/thankyou_page',
-            'unotify' => 'https://your-website/notify_page',
+            'ureturn' => route('checkout.success'),
+            'unotify' => route('callback'),
             'ucancel' => 'https://your-website/cancel_page',
         ]);
 
@@ -81,18 +81,6 @@ class CheckoutController extends Controller
 
         // $ipaymu->setReferenceId($order->order_id);
         $ipaymu->setComments('Pembayaran Item di BKAS');
-        // // set your expiredPayment
-
-
-        // // set payment method
-        // // check https://ipaymu.com/api-collection for list payment method
-        // $iPaymu->setPaymentMethod('va');
-
-        // // check https://ipaymu.com/api-collection for list payment channel
-        // $iPaymu->setPaymentChannel('bca');
-
-        // $iPaymu->setExpired(15, 'minutes'); // 24 hours
-        // return $order->orderDetail;
         $product = array();
         $price = array();
         $quantity = array();
@@ -140,5 +128,11 @@ class CheckoutController extends Controller
             $order->status = 'failed';
         }
         $order->save();
+    }
+    public function success(){
+        return view('frontend.pages.checkout.success');
+    }
+    public function cancel(){
+        return view('frontend.pages.checkout.cancel');
     }
 }

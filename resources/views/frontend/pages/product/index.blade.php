@@ -87,7 +87,6 @@
                         .attr('type', 'hidden')
                         .attr('name', 'category_id') // Use the appropriate input name
                         .val(category.slug); // Use the category ID or relevant identifier
-
                     var submitButton = $('<button>')
                         .addClass('btn categories_name border-none')
                         .attr('type', 'submit')

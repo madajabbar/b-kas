@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('frontend.layouts.app')
+@section('css')
     <style>
         ::-webkit-scrollbar {
             width: 10px
@@ -53,20 +52,29 @@
             color: #3e3c3c
         }
     </style>
-    <div class="d-flex justify-content-center container mt-5">
-        <div class="wrapper">
-            <div class="main">
-                <div class="px-2 scroll" id="message">
+@endsection
+@section('content')
+    <div class="main_content">
+        <!-- START SECTION SHOP -->
+        <div class="section">
+            <div class="d-flex justify-content-center container mt-5">
+                <div class="wrapper">
+                    <div class="main">
+                        <div class="px-2 scroll" id="message">
+                        </div>
+                        <form id="form" class="navbar bg-white navbar-expand-sm d-flex justify-content-between">
+                            <input type="text number" name="text" class="form-control" placeholder="Type a message...">
+                            <button class="btn btn-success">
+                                Send
+                            </button>
+                        </form>
+                    </div>
                 </div>
-                <form id="form" class="navbar bg-white navbar-expand-sm d-flex justify-content-between">
-                    <input type="text number" name="text" class="form-control" placeholder="Type a message...">
-                    <button class="btn btn-success">
-                        Send
-                    </button>
-                </form>
             </div>
         </div>
     </div>
+@endsection
+@section('js')
     {{-- Load pusher library --}}
     <script src="https://js.pusher.com/7.2/pusher.min.js"></script>
     <script>
@@ -116,7 +124,7 @@
                     })
                 })
                 const data = await response.json()
-                if(data) {
+                if (data) {
                     // Get chat
                     await getChat()
                     message.value = ''

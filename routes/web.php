@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ConditionController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
@@ -35,6 +36,7 @@ Route::get('/quickview/{product}', [HomeController::class, 'quickView'])->name('
 Route::get('/user',[UserController::class,'index'])->name('user');
 Route::post('/user/update',[UserController::class,'update'])->name('update.user');
 Route::get('/product', [HomeController::class, 'product'])->name('product');
+Route::get('/seller/{seller}', [HomeController::class, 'seller'])->name('seller');
 Route::get('/product/detail', [HomeController::class, 'productDetail'])->name('productDetail');
 Route::get('/user/product', [UserController::class, 'showProduct'])->name('user.product');
 Route::get('/user/product/create', [UserController::class, 'addProduct'])->name('user.product.create');
@@ -47,6 +49,7 @@ Route::prefix('admin')->group(function(){
     Route::resource('category', CategoryController::class);
     Route::resource('condition', ConditionController::class);
     Route::resource('product', ProductController::class);
+    Route::resource('product-image', ProductImageController::class);
     Route::get('datatable/user',[AdminUserController::class, 'datatable'])->name('user.table');
     Route::get('datatable/category',[CategoryController::class, 'datatable'])->name('category.table');
     Route::get('datatable/condition',[ConditionController::class, 'datatable'])->name('condition.table');
@@ -61,6 +64,8 @@ Route::middleware('auth')->group(function(){
     Route::post('/cart/checkout',[CartController::class,'checkout'])->name('cart.checkout');
     Route::get('/cart/table',[CartController::class,'cart'])->name('cart.table');
     Route::get('/cart/delete',[CartController::class,'delete'])->name('cart.delete');
+    Route::post('/product/comment',[HomeController::class,'comment'])->name('product.comment');
+    Route::post('/product/like',[HomeController::class,'like'])->name('product.like');
 });
 Route::get('/test',function(){
     $data['users'] = User::all();
@@ -72,3 +77,5 @@ Route::get('/chat/get/{room}', [App\Http\Controllers\ChatController::class, 'get
 Route::post('/chat/send', [App\Http\Controllers\ChatController::class, 'sendChat'])->name('chat.send');
 Route::get('rajaongkir',[CheckoutController::class,'rajaongkir'])->name('rajaongkir');
 Route::post('ipaymu/callback', [CheckoutController::class, 'ipaymu'])->name('callback');
+Route::get('checkout/success',[CheckoutController::class, 'success'])->name('checkout.success');
+Route::get('checkout/cancel',[CheckoutController::class, 'cancel'])->name('checkout.cancel');
