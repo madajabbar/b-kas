@@ -103,7 +103,7 @@
                                     <form action="{{route('product.like')}}" method="post">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{$product->id}}">
-                                        @if ($product->review[0]->islike != null)
+                                        @if ($product->review != null)
                                         <button class="add_wishlist" href="#"><i class="{{$product->review[0]->islike == true ? 'icon-heart':'icon-star'}}"></i></button>
                                         @else
                                         <button class="add_wishlist" href="#"><i class="icon-star"></i></button>
