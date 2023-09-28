@@ -112,16 +112,13 @@
         element.addEventListener('change', function (event) {
             const selectedShipping = event.target.value;
             console.log(shippingId);
-            // Assuming you have a URL for your RajaOngkir endpoint
-            const rajaOngkirUrl = 'https://api.rajaongkir.com/starter/cost';
-
-            // Replace 'your-api-key' with your actual RajaOngkir API key
-            const apiKey = "{{env('RAJAONGKIR_API_KEY')}}";
-
             // Replace 'originCity' and 'destinationCity' with the appropriate values
             const originCity = {{Auth::user()->userData->city_id}};
             const destinationCity = shippingId;
 
+            // Show the preloader before making the AJAX request
+            const preloader = document.getElementById('preloader');
+            preloader.style.display = 'block';
 
             $.ajaxSetup({
                 headers: {
@@ -151,9 +148,12 @@
                     shippingService.textContent = response.ongkir.shipping_code;
                     updatedTotalPayment.textContent = "Rp. " + response.ongkir.total_payment;
                     shippingDescription.textContent = response.ongkir.shipping_description;
+                    preloader.style.display = 'none';
+
                 },
                 error: function(xhr) {
                     console.log(xhr);
+                    preloader.style.display = 'none';
 
                 }
             });

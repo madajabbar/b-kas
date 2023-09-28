@@ -65,7 +65,7 @@
 <body>
 
     <!-- LOADER -->
-    <div class="preloader">
+    <div class="preloader" id="preloader">
         <div class="lds-ellipsis">
             <span></span>
             <span></span>

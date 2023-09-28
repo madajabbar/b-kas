@@ -136,4 +136,9 @@ class UserController extends Controller
         $data = ProductImage::where('ulid',$ulid)->first()->delete();
         return redirect()->back();
     }
+
+    public function order(Request $request){
+        $data['order'] = Order::where('ulid', $request->ulid)->first();
+        return view('frontend.pages.user.order-detail',$data);
+    }
 }

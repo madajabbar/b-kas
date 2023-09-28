@@ -29,7 +29,7 @@
                                     item
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-fill-out btn-sm">View</a>
+                                    <a href="{{route('order.user',['ulid'=>$order->ulid])}}" class="btn btn-fill-out btn-sm">View</a>
                                 </td>
                             </tr>
                         @endforeach
