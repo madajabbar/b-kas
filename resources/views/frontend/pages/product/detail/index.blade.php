@@ -222,10 +222,17 @@
                                             </div>
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
                                             <div class="form-group col-12 mb-3">
-                                                <button type="submit" class="btn btn-fill-out" name="submit"
-                                                    value="Submit">
-                                                    Submit Review
-                                                </button>
+                                                @if (Auth::check())
+                                                    <button type="submit" class="btn btn-fill-out" name="submit"
+                                                        value="Submit">
+                                                        Submit Review
+                                                    </button>
+                                                    @else
+                                                    <a type="button" class="btn btn-fill-out" data-bs-toggle="modal"
+                                                    data-bs-target="#onload-popup">
+                                                    Login
+                                                </a>
+                                                @endif
                                             </div>
                                         </form>
                                     </div>
