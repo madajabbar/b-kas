@@ -76,6 +76,5 @@ Route::get('/chat/room/{room}', [App\Http\Controllers\ChatController::class, 'ro
 Route::get('/chat/get/{room}', [App\Http\Controllers\ChatController::class, 'getChat'])->name('chat.get');
 Route::post('/chat/send', [App\Http\Controllers\ChatController::class, 'sendChat'])->name('chat.send');
 Route::get('rajaongkir',[CheckoutController::class,'rajaongkir'])->name('rajaongkir');
-Route::post('ipaymu/callback', [CheckoutController::class, 'ipaymu'])->name('callback');
 Route::get('checkout/success',[CheckoutController::class, 'success'])->name('checkout.success');
 Route::get('checkout/cancel',[CheckoutController::class, 'cancel'])->name('checkout.cancel');
