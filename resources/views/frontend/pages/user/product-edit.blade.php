@@ -17,24 +17,33 @@
                     <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                         <div class="product-image">
                             <div class="product_img_box">
+                                @if (isset($product->productImage))
                                 <img id="product_img" src="{{ asset('storage/' . $product->productImage[0]->link) }}"
                                     data-zoom-image="{{ asset('storage/' . $product->productImage[0]->link) }}"
                                     alt="product_img1" />
+                                    @else
+                                    <img id="product_img" src="{{ asset('frontend/assets/images/product_img1-2.jpg') }}"
+                                        data-zoom-image="{{ asset('frontend/assets/images/product_img1-2.jpg') }}"
+                                        alt="product_img1" />
+                                @endif
                                 <a href="#" class="product_img_zoom" title="Zoom">
                                     <span class="linearicons-zoom-in"></span>
                                 </a>
                             </div>
                             <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4"
                                 data-slides-to-scroll="1" data-infinite="false">
-                                @foreach ($product->productImage as $image)
-                                    <div class="item">
-                                        <a href="#" class="product_gallery_item active"
-                                            data-image="{{ asset('storage/' . $image->link) }}"
-                                            data-zoom-image="{{ asset('storage/' . $image->link) }}">
-                                            <img src="{{ asset('storage/' . $image->link) }}" alt="{{ $image->name }}" />
-                                        </a>
-                                    </div>
-                                @endforeach
+                                @if (isset($product->productImage))
+                                    @foreach ($product->productImage as $image)
+                                        <div class="item">
+                                            <a href="#" class="product_gallery_item active"
+                                                data-image="{{ asset('storage/' . $image->link) }}"
+                                                data-zoom-image="{{ asset('storage/' . $image->link) }}">
+                                                <img src="{{ asset('storage/' . $image->link) }}" alt="{{ $image->name }}" />
+                                            </a>
+                                        </div>
+                                    @endforeach
+
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -144,10 +153,11 @@
                         </form>
                     </div>
                     <div class="col-6">
+                        @if (isset($product->productImage))
                         @foreach ($product->productImage as $image)
                                 <a class="btn btn-danger btn-sm mx-auto" href="{{route('user.product.image.delete',$image->ulid)}}">Hapus Gambar {{$loop->iteration}}</a>
                         @endforeach
-
+                        @endif
                     </div>
                 </div>
 

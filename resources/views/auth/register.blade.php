@@ -40,6 +40,16 @@
                             <div class="form-group mb-3">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
+                            <div class="form-group mb-3">
+                                <select name="role_id" id="role_id" class="form-select">
+                                    @foreach ($role as $data)
+                                    @if ($data->name == 'admin')
+                                        @continue
+                                    @endif
+                                        <option value="{{$data->id}}">{{$data->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="login_footer form-group mb-3">
                                 <div class="chek-form">
                                     <div class="custome-checkbox">
