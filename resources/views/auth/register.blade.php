@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-group mb-3">
                                 <select name="role_id" id="role_id" class="form-select">
-                                    @foreach ($role as $data)
+                                    @foreach (App\Models\Role::all() as $data)
                                     @if ($data->name == 'admin')
                                         @continue
                                     @endif
