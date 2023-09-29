@@ -21,7 +21,7 @@
                         <div class="product-image">
                             <div class="product_img_box">
                                 @if ($product != null)
-                                    @if (isset($product->productImage))
+                                    @if (count($product->productImage) > 0)
                                     <img id="product_img"
                                     src="{{ asset('storage/' . $product->productImage[0]->link) }}"
                                     data-zoom-image="{{ asset('storage/' . $product->productImage[0]->link) }}"
