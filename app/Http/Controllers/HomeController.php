@@ -30,7 +30,17 @@ class HomeController extends Controller
     use DataTrait;
     public function index()
     {
-        $data['product'] = Product::all()->random(8);
+        $numberOfProductsToRetrieve = 8;
+        $productCount = Product::count();
+
+        if ($productCount >= $numberOfProductsToRetrieve) {
+            // Retrieve 8 random products if there are at least 8 products in the database
+            $data['product'] = Product::inRandomOrder()->take($numberOfProductsToRetrieve)->get();
+        } else {
+            // Handle the case when there are fewer than 8 products
+            // You can choose to retrieve all products in this case or handle it differently
+            $data['product'] = Product::all();
+        }
         return view('frontend.home.index',$data);
     }
     public function product(Request $request){

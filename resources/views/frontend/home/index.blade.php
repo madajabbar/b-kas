@@ -186,7 +186,7 @@
 <!-- END SECTION BANNER -->
 
 <!-- START SECTION SHOP -->
-<div class="section small_pt pb_20">
+{{-- <div class="section small_pt pb_20">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -445,7 +445,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- END SECTION SHOP -->
 
 <!-- START SECTION INSTAGRAM IMAGE -->

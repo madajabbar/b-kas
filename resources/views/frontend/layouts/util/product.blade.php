@@ -3,8 +3,12 @@
         <input type="hidden" name="product" value="{{ $data->ulid }}">
     </form>
     <div class="product_img">
-        <a href="#">
+        <a href="{{route('productDetail',['product'=>$data->ulid])}}">
+            @if (count($data->productImage) > 0)
+            <img src="{{ asset('storage/'.$data->productImage[0]->link) }}" alt="product_img1" />
+            @else
             <img src="{{ asset('frontend/assets/images/product_img1.jpg') }}" alt="product_img1" />
+            @endif
         </a>
         <div class="product_action_box">
             <ul class="list_none pr_action_btn">
