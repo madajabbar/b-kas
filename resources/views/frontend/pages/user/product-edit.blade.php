@@ -8,31 +8,45 @@
         <!-- START SECTION SHOP -->
         <div class="section">
             <div class="container">
+                @if ($product != null)
                 <button class="btn btn-fill-out my-2" type="button" data-bs-toggle="modal" data-bs-target="#image-popup">
                     <i class="icon-pencil"></i>
                     Add Image
                 </button>
+
+                @endif
                 @include('frontend.pages.user.pop-image')
                 <div class="row">
                     <div class="col-lg-6 col-md-6 mb-4 mb-md-0">
                         <div class="product-image">
                             <div class="product_img_box">
-                                @if (isset($product->productImage))
-                                <img id="product_img" src="{{ asset('storage/' . $product->productImage[0]->link) }}"
+                                @if ($product != null)
+                                    @if (isset($product->productImage))
+                                    <img id="product_img"
+                                    src="{{ asset('storage/' . $product->productImage[0]->link) }}"
                                     data-zoom-image="{{ asset('storage/' . $product->productImage[0]->link) }}"
                                     alt="product_img1" />
                                     @else
                                     <img id="product_img" src="{{ asset('frontend/assets/images/product_img1-2.jpg') }}"
                                         data-zoom-image="{{ asset('frontend/assets/images/product_img1-2.jpg') }}"
                                         alt="product_img1" />
+                                    @endif
+                                    <a href="#" class="product_img_zoom" title="Zoom">
+                                        <span class="linearicons-zoom-in"></span>
+                                    </a>
+                                @else
+                                    <img id="product_img" src="{{ asset('frontend/assets/images/product_img1-2.jpg') }}"
+                                        data-zoom-image="{{ asset('frontend/assets/images/product_img1-2.jpg') }}"
+                                        alt="product_img1" />
+
+                                    <a href="#" class="product_img_zoom" title="Zoom">
+                                        <span class="linearicons-zoom-in"></span>
+                                    </a>
                                 @endif
-                                <a href="#" class="product_img_zoom" title="Zoom">
-                                    <span class="linearicons-zoom-in"></span>
-                                </a>
                             </div>
-                            <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4"
-                                data-slides-to-scroll="1" data-infinite="false">
-                                @if (isset($product->productImage))
+                            @if ($product != null)
+                                <div id="pr_item_gallery" class="product_gallery_item slick_slider" data-slides-to-show="4"
+                                    data-slides-to-scroll="1" data-infinite="false">
                                     @foreach ($product->productImage as $image)
                                         <div class="item">
                                             <a href="#" class="product_gallery_item active"
@@ -42,9 +56,9 @@
                                             </a>
                                         </div>
                                     @endforeach
+                                </div>
 
-                                @endif
-                            </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
@@ -65,7 +79,8 @@
                                         <sup><i class="icon-pencil"></i></sup>
                                         <div class="on_sale">
                                             <span>Discount (only input number) : Rp. </span>
-                                            <span id="discount" contenteditable="true">{{ $product->discount ?? 0 }}</span>
+                                            <span id="discount"
+                                                contenteditable="true">{{ $product->discount ?? 0 }}</span>
                                             <sup><i class="icon-pencil"></i></sup>
                                         </div>
                                     </div>
@@ -154,9 +169,11 @@
                     </div>
                     <div class="col-6">
                         @if (isset($product->productImage))
-                        @foreach ($product->productImage as $image)
-                                <a class="btn btn-danger btn-sm mx-auto" href="{{route('user.product.image.delete',$image->ulid)}}">Hapus Gambar {{$loop->iteration}}</a>
-                        @endforeach
+                            @foreach ($product->productImage as $image)
+                                <a class="btn btn-danger btn-sm mx-auto"
+                                    href="{{ route('user.product.image.delete', $image->ulid) }}">Hapus Gambar
+                                    {{ $loop->iteration }}</a>
+                            @endforeach
                         @endif
                     </div>
                 </div>
