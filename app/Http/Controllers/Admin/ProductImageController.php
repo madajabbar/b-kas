@@ -29,7 +29,7 @@ class ProductImageController extends Controller
                 return $form;
             })
             ->editColumn('link', function ($row){
-                $image = '<img src="'.asset('storage/'.$row->link).'" class="img-fluid">';
+                $image = '<img src="'.asset($row->link).'" class="img-fluid">';
                 return $image;
             })
             ->rawColumns(['action','link'])
@@ -56,12 +56,13 @@ class ProductImageController extends Controller
         );
         $image = Image::make($request->image)->encode('webp', 100);
         $data = Product::find($request->product_id);
-        $path = 'product/'.Str::slug($data->user->ulid).'/' . Str::slug($data->name) . '_' . count($data->productImage) + 1. . '.webp';
-        Storage::put('public/' . $path, $image);
+        $imageName = Str::slug($data->name) . '_' . count($data->productImage) + 1. . '.webp';
+        $path = 'product/'.Str::slug($data->user->ulid).'/';
+        $request->image->move(public_path($path),$imageName);
         $data = ProductImage::create(
             [
                 'name' => $data->name."_".count($data->productImage)+1,
-                'link' => $path,
+                'link' => $path,$imageName,
                 'product_id' => $data->id,
             ]
         );

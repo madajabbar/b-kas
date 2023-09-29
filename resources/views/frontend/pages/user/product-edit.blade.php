@@ -23,8 +23,8 @@
                                 @if ($product != null)
                                     @if (count($product->productImage) > 0)
                                     <img id="product_img"
-                                    src="{{ asset('storage/' . $product->productImage[0]->link) }}"
-                                    data-zoom-image="{{ asset('storage/' . $product->productImage[0]->link) }}"
+                                    src="{{ asset( $product->productImage[0]->link) }}"
+                                    data-zoom-image="{{ asset( $product->productImage[0]->link) }}"
                                     alt="product_img1" />
                                     @else
                                     <img id="product_img" src="{{ asset('frontend/assets/images/product_img1-2.jpg') }}"
@@ -50,9 +50,9 @@
                                     @foreach ($product->productImage as $image)
                                         <div class="item">
                                             <a href="#" class="product_gallery_item active"
-                                                data-image="{{ asset('storage/' . $image->link) }}"
-                                                data-zoom-image="{{ asset('storage/' . $image->link) }}">
-                                                <img src="{{ asset('storage/' . $image->link) }}" alt="{{ $image->name }}" />
+                                                data-image="{{ asset( $image->link) }}"
+                                                data-zoom-image="{{ asset( $image->link) }}">
+                                                <img src="{{ asset( $image->link) }}" alt="{{ $image->name }}" />
                                             </a>
                                         </div>
                                     @endforeach

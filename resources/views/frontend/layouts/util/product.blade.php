@@ -5,7 +5,7 @@
     <div class="product_img">
         <a href="{{route('productDetail',['product'=>$data->ulid])}}">
             @if (count($data->productImage) > 0)
-            <img src="{{ asset('storage/'.$data->productImage[0]->link) }}" alt="product_img1" />
+            <img src="{{ asset($data->productImage[0]->link) }}" alt="product_img1" />
             @else
             <img src="{{ asset('frontend/assets/images/product_img1.jpg') }}" alt="product_img1" />
             @endif

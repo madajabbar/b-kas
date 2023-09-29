@@ -4,7 +4,12 @@
     </form>
     <div class="product_img">
         <a href="#">
-            <img src="{{ asset('frontend/assets/images/product_img1.jpg') }}" alt="product_img1" />
+            @if (count($data->productImage)>0)
+                <img src="{{ asset($data->productImage[0]->link) }}" alt="{{$data->productImage[0]->link}}" />
+                @else
+                <img src="{{ asset('frontend/assets/images/product_img1-2.jpg') }}" alt="{{$data->productImage[0]->link}}" />
+
+            @endif
         </a>
         <div class="product_action_box">
             <ul class="list_none pr_action_btn">
@@ -28,9 +33,9 @@
         </h6>
         <div class="product_price">
             <span class="price">Rp. {{ $data->price }}</span>
-            <del>Rp. 1000</del>
+            <del>Rp. {{$data->price + $data->discount}}</del>
             <div class="on_sale">
-                <span>35% Off</span>
+                <span>{{$data->discount_status}}</span>
             </div>
         </div>
         <div class="rating_wrap">

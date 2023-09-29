@@ -120,12 +120,13 @@ class UserController extends Controller
         );
         $image = Image::make($request->image)->encode('webp', 100);
         $data = Product::find($request->id);
-        $path = 'product/'.Str::slug($data->user->ulid).'/' . Str::slug($data->name) . '_' . count($data->productImage) + 1. . '.webp';
-        Storage::put('public/' . $path, $image);
+        $imageName = Str::slug($data->name) . '_' . count($data->productImage) + 1. . '.webp';
+        $path = 'product/'.Str::slug($data->user->ulid).'/';
+        $request->image->move(public_path($path),$imageName);
         $data = ProductImage::create(
             [
                 'name' => $data->name."_".count($data->productImage)+1,
-                'link' => $path,
+                'link' => $path.$imageName,
                 'product_id' => $data->id,
             ]
         );
