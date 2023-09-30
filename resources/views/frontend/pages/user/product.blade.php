@@ -7,7 +7,7 @@
             @if (count($data->productImage)>0)
                 <img src="{{ asset($data->productImage[0]->link) }}" alt="{{$data->productImage[0]->link}}" />
                 @else
-                <img src="{{ asset('frontend/assets/images/product_img1-2.jpg') }}" alt="{{$data->productImage[0]->link}}" />
+                <img src="{{ asset('frontend/assets/images/product_img1-2.jpg') }}" alt="" />
 
             @endif
         </a>
