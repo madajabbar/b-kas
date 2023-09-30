@@ -255,7 +255,10 @@
                         </div>
                         <div class="releted_product_slider carousel_slider owl-carousel owl-theme" data-margin="20"
                             data-responsive='{"0":{"items": "1"}, "481":{"items": "2"}, "768":{"items": "3"}, "1199":{"items": "4"}}'>
-                            @foreach ($product->category->product->random(8) as $data)
+                            @foreach ($product->category->product as $data)
+                                @if($loop->iteration > 8)
+                                @break
+                                @endif
                                 @include('frontend.pages.product.detail.related_products')
                             @endforeach
                         </div>
